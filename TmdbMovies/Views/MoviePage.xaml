@@ -1,0 +1,184 @@
+﻿<Page x:Class="TmdbMovies.Views.MoviePage"
+      xmlns:sys="using:System"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:TmdbMovies.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:models="using:TmdbMovies.Models"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      CanBeScrollAnchor="True">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:StringFormatConverter x:Key="StringFormatter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisib"
+                                                  TrueValue="Visible"
+                                                  FalseValue="Collapsed"/>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Spacing="20">
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            Spacing="50"
+                            VerticalAlignment="Top">
+                    <controls:ImageEx Source="{x:Bind ViewModel.Movie.FullPoster, Mode=OneWay}"
+                                      CornerRadius="20"
+                                      Width="390"
+                                      VerticalAlignment="Top" />
+
+                    <StackPanel Spacing="30">
+                        <StackPanel>
+                            <TextBlock Text="Title"
+                                       Style="{StaticResource SectionHeader}" />
+                            <TextBlock Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="Release Date"
+                                       Style="{StaticResource SectionHeader}" />
+                            <TextBlock Text="{x:Bind ViewModel.Movie.ReleaseDate, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:dd MMM yyyy}', Mode=OneWay}" />
+                        </StackPanel>
+
+                        <StackPanel Visibility="{x:Bind ViewModel.HasBudget, Converter={StaticResource BoolToVisib}, Mode=OneWay}">
+                            <TextBlock Text="Budget"
+                                       Style="{StaticResource SectionHeader}" />
+                            <TextBlock Text="{x:Bind ViewModel.Movie.Budget, Converter={StaticResource StringFormatter},  ConverterParameter='{}{0:C0}', Mode=OneWay}" />
+                        </StackPanel>
+
+                        <StackPanel Visibility="{x:Bind ViewModel.HasRevenue, Converter={StaticResource BoolToVisib}, Mode=OneWay}">
+                            <TextBlock Text="Revenue"
+                                       Style="{StaticResource SectionHeader}" />
+                            <TextBlock Text="{x:Bind ViewModel.Movie.Revenue, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:C0}', Mode=OneWay}" />
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="Vote Average"
+                                       Style="{StaticResource SectionHeader}" />
+                            <RatingControl IsReadOnly="True"                                            
+                                           Value="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay}" 
+                                           MaxRating="10" 
+                                           HorizontalAlignment="Left"/>
+                        </StackPanel>
+
+                        <StackPanel Visibility="{x:Bind ViewModel.Movie.Duration.HasValue, Converter={StaticResource BoolToVisib}, Mode=OneWay}">
+                            <TextBlock Text="Length (minutes)"
+                                       Style="{StaticResource SectionHeader}" />
+                            <TextBlock Text="{x:Bind ViewModel.Movie.Duration, Mode=OneWay}" />
+                        </StackPanel>
+                        <StackPanel Width="500">
+                            <TextBlock Text="Overview"
+                                       Style="{StaticResource SectionHeader}" />
+                            <TextBlock TextWrapping="WrapWholeWords"
+                                       Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <HyperlinkButton Content="Cast"
+                            Style="{StaticResource HyperlinkSectionHeader}"
+                            ToolTipService.ToolTip="Show Full Cast"
+                            IsEnabled="{x:Bind ViewModel.HasMoreCast, Mode=OneWay}" 
+                            Click="ShowFullCast_Click"
+                            HorizontalAlignment="Center"/>
+
+                <GridView ItemsSource="{x:Bind ViewModel.Cast, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          ItemClick="ListViewBase_OnItemClick"
+                          HorizontalAlignment="Center">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Person">
+                            <StackPanel Margin="10"
+                                        Width="120">
+                                <controls:ImageEx Width="66"
+                                                  MinHeight="66"
+                                                  Margin="10"
+                                                  CornerRadius="10"
+                                                  Background="LightGray"
+                                                  Source="{x:Bind Thumbnail, Mode=OneWay}" />
+                                <TextBlock Text="{x:Bind Name}"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="WrapWholeWords" />
+                                <TextBlock Text="{x:Bind CharacterName}"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center" 
+                                           TextWrapping="WrapWholeWords"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:WrapPanel />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+
+                <HyperlinkButton Content="Crew"
+                                Style="{StaticResource HyperlinkSectionHeader}"
+                                Click="ShowFullCrew_Click"
+                                ToolTipService.ToolTip="Show Full Crew"
+                                IsEnabled="{x:Bind ViewModel.HasMoreCrew, Mode=OneWay}"
+                                HorizontalAlignment="Center"/>
+
+                
+                <GridView ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          ItemClick="ListViewBase_OnItemClick"
+                          HorizontalAlignment="Center">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Person">
+                            <StackPanel Margin="10"
+                                        Width="120">
+                                <controls:ImageEx Width="66"
+                                                  MinHeight="66"
+                                                  Margin="10"
+                                                  CornerRadius="10"
+                                                  Background="LightGray"
+                                                  Source="{x:Bind Thumbnail, Mode=OneWay}" />
+                                <TextBlock Text="{x:Bind Name}"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="WrapWholeWords" />
+                                <TextBlock Text="{x:Bind Job}"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center" 
+                                           TextWrapping="WrapWholeWords"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:WrapPanel />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+
+            </StackPanel>
+        </ScrollViewer>
+        <ProgressRing Grid.Row="0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      IsActive="{x:Bind ViewModel.IsSearching, Mode=OneWay}"
+                      Width="100"
+                      Height="100" />
+
+    </Grid>
+</Page>

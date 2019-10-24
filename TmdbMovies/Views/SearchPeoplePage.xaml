@@ -1,0 +1,105 @@
+﻿<Page
+    x:Class="TmdbMovies.Views.SearchPeoplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TmdbMovies.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:models="using:TmdbMovies.Models"
+    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"
+                                              TrueValue="Visible"
+                                              FalseValue="Collapsed" />
+        <converters:BoolNegationConverter x:Key="NegBool" />
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="0"
+                    VerticalAlignment="Center"
+                    Spacing="10">
+            <SearchBox Width="300"
+                       PlaceholderText="Name"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       QueryText="{x:Bind ViewModel.SearchString, Mode=TwoWay}"
+                       QuerySubmitted="SearchBox_OnQuerySubmitted"
+                       SearchHistoryEnabled="False">
+            </SearchBox>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <GridView Grid.Row="0"
+                      Margin="10"
+                      ItemsSource="{x:Bind ViewModel.Actors, Mode=TwoWay}"
+                      IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
+                      HorizontalContentAlignment="Center"
+                      IsItemClickEnabled="True"
+                      ItemClick="GridView_ItemClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Person">
+                        <StackPanel Margin="5"
+                                    Width="200">
+                            <controls:ImageEx Width="185"
+                                              Height="280"
+                                              CornerRadius="20"
+                                              Background="LightGray"
+                                              Source="{x:Bind Profile}" />
+                            <TextBlock Text="{x:Bind Name}"
+                                       HorizontalAlignment="Center"
+                                       TextAlignment="Center"
+                                       TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <controls:WrapPanel HorizontalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="1"
+                        Margin="10"
+                        Spacing="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Visibility="{x:Bind ViewModel.HasResults, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}">
+                <Button Content="Prev"
+                        Click="Prev_Click"
+                        IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}" 
+                        Width="50" />
+                <TextBox Text="{x:Bind ViewModel.CurrentPage, Mode=TwoWay}"
+                         IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
+                         TextChanging="TextBox_TextChanging" />
+                <TextBlock Text="of"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="{x:Bind ViewModel.TotalPages, Mode=TwoWay}"
+                           VerticalAlignment="Center" />
+                <Button Content="Next"
+                        Click="Next_Click"
+                        IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
+                        Width="50" />
+            </StackPanel>
+        </Grid>
+        <ProgressRing Grid.Row="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      IsActive="{x:Bind ViewModel.IsSearching, Mode=TwoWay}"
+                      Width="100"
+                      Height="100" />
+        </Grid>
+</Page>
