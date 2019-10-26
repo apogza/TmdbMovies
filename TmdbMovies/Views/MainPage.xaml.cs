@@ -1,10 +1,12 @@
 ﻿using System;
 using Windows.Devices.Input;
+using Windows.System;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using Windows.Web.UI.Interop;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -67,6 +69,19 @@ namespace TmdbMovies.Views
                 {
                     ContentFrame.GoForward();
                 }
+            }
+        }
+
+        private void MainPage_OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Left && e.KeyStatus.IsMenuKeyDown && ContentFrame.CanGoBack)
+            {
+                ContentFrame.GoBack();
+            }
+
+            if (e.Key == VirtualKey.Right && e.KeyStatus.IsMenuKeyDown && this.ContentFrame.CanGoForward)
+            {
+                ContentFrame.GoForward();
             }
         }
     }
