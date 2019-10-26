@@ -41,8 +41,13 @@ namespace TmdbMovies.Views
                 ViewModel.PersonId = person.TmdbId;
                 DataContext = ViewModel;
 
-                await ViewModel.ReadInfo();
-                await ViewModel.Search(refreshSearch);
+                if (refreshSearch)
+                {
+                    ViewModel.Reset();
+
+                    await ViewModel.ReadInfo();
+                    await ViewModel.Search(true);
+                }
             }
         }
 

@@ -36,8 +36,14 @@ namespace TmdbMovies.Views
         {
             if (e.Parameter is Movie movie)
             {
-                ViewModel = new MoviePageViewModel();
-                await ViewModel.ReadInfo(movie.TmdbId);
+                ViewModel = NavigationService.RestoreState<MoviePageViewModel>();
+                DataContext = ViewModel;
+
+                if (ViewModel.Movie == null || ViewModel.Movie.TmdbId != movie.TmdbId)
+                {
+                    ViewModel.Reset();
+                    await ViewModel.ReadInfo(movie.TmdbId);
+                }
             }
         }
 
