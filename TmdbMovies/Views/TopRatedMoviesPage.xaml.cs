@@ -33,10 +33,13 @@ namespace TmdbMovies.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string viewModelId = NavigationService.GetNavigationVmId<TopRatedMoviesPageViewModel>();
-
-            ViewModel = NavigationService.RestoreState<TopRatedMoviesPageViewModel>(viewModelId);
+            ViewModel = NavigationService.RestoreState<TopRatedMoviesPageViewModel>();
             DataContext = ViewModel;
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            NavigationService.SaveState(ViewModel);
         }
     }
 }

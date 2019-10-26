@@ -34,10 +34,8 @@ namespace TmdbMovies.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is Person person)
-            {
-                string viewModelId = NavigationService.GetNavigationVmId<PersonPageViewModel>();
-
-                ViewModel = NavigationService.RestoreState<PersonPageViewModel>(viewModelId);
+            { 
+                ViewModel = NavigationService.RestoreState<PersonPageViewModel>();
                 bool refreshSearch = ViewModel.PersonId != person.TmdbId;
 
                 ViewModel.PersonId = person.TmdbId;
@@ -46,6 +44,11 @@ namespace TmdbMovies.Views
                 await ViewModel.ReadInfo();
                 await ViewModel.Search(refreshSearch);
             }
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            NavigationService.SaveState(ViewModel);
         }
     }
 }

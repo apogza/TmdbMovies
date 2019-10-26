@@ -30,9 +30,8 @@ namespace TmdbMovies.Views
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-            string vmId = NavigationService.GetNavigationVmId<NewMoviesPageViewModel>();
-            ViewModel = NavigationService.RestoreState<NewMoviesPageViewModel>(vmId);
+        { 
+            ViewModel = NavigationService.RestoreState<NewMoviesPageViewModel>();
             
             DataContext = ViewModel;
 
@@ -40,6 +39,11 @@ namespace TmdbMovies.Views
             {
                 await ViewModel.Search(true);
             }
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            NavigationService.SaveState(ViewModel);
         }
     }
 }

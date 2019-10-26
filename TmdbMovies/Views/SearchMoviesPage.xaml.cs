@@ -12,7 +12,7 @@ namespace TmdbMovies.Views
     /// </summary>
     public sealed partial class SearchMoviesPage : Page
     {
-        public SearchMoviesPageViewModel ViewModel { get; set; }
+        public  SearchMoviesPageViewModel ViewModel { get; set; }
 
         public SearchMoviesPage()
         {
@@ -26,10 +26,13 @@ namespace TmdbMovies.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string viewModelId = NavigationService.GetNavigationVmId<SearchMoviesPageViewModel>();
-
-            ViewModel = NavigationService.RestoreState<SearchMoviesPageViewModel>(viewModelId);
+            ViewModel = NavigationService.RestoreState<SearchMoviesPageViewModel>();
             DataContext = ViewModel;
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            NavigationService.SaveState(ViewModel);
         }
     }
 }

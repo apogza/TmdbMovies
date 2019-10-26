@@ -41,6 +41,11 @@ namespace TmdbMovies.Views
             }
         }
 
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            NavigationService.SaveState(ViewModel);
+        }
+
         private void ListViewBase_OnItemClick(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is Person selectedPerson)
