@@ -92,7 +92,19 @@ namespace TmdbMovies
 
         private void LoadApiKey()
         {
-            string key = File.ReadAllText("Resources/api_key.txt");
+            string filePath = "Resources/api_key.txt";
+
+            if (!File.Exists(filePath))
+            {
+                throw new Exception("File api_key.txt not found. Please create it in the Resources folder");
+            }
+
+            string key = File.ReadAllText(filePath);
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new Exception("Invalid api key.");
+            }
+
             TmdbConstants.TmdbKey = key;
         }
     }
