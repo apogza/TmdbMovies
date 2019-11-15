@@ -7,7 +7,7 @@ namespace TmdbMovies.ViewModels
         protected RestClient RestClient { get; }
 
         public BaseViewModel()
-            :base()
+            : base()
         {
             RestClient = new RestClient(TmdbConstants.BaseUri);
         }

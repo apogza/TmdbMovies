@@ -26,37 +26,25 @@ namespace TmdbMovies
             ContentFrame?.NavigateToType(pageType, parameter, null);
         }
 
-        public static void SaveState(string viewModelId, BaseViewModel viewModel)
+        public static void SaveState(BaseViewModel viewModel)
         {
-            NavigationState[viewModelId] = viewModel;
-        }
-
-        public static void DeleteState(string viewModelId)
-        {
-            if (NavigationState.ContainsKey(viewModelId))
+            string viewModelId = viewModel?.GetType().FullName;
+            if (viewModelId != null)
             {
-                NavigationState.Remove(viewModelId);
+                NavigationState[viewModelId] = viewModel;
             }
         }
 
-        public static T RestoreState<T>(string viewModelId) where T: BaseViewModel, new()
+        public static T RestoreState<T>() where T:BaseViewModel, new()
         {
-            if (NavigationState.ContainsKey(viewModelId))
+            string viewModelId = typeof(T).FullName;
+
+            if (viewModelId != null && NavigationState.ContainsKey(viewModelId))
             {
                 return NavigationState[viewModelId] as T;
             }
 
             return new T();
-        }
-
-        public static string GetNavigationVmId<T>() where T: BaseViewModel, new()
-        {
-            return typeof(T).Name;
-        }
-
-        public static string GetNavigationVmId(BaseViewModel vm)
-        {
-            return vm.GetType().Name;
         }
 
         public static void NavigateTo(Type pageType, object parameter = null)

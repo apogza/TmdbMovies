@@ -33,10 +33,13 @@ namespace TmdbMovies.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string viewModelId = NavigationService.GetNavigationVmId<SearchPeoplePageViewModel>();
-
-            ViewModel = NavigationService.RestoreState<SearchPeoplePageViewModel>(viewModelId);
+            ViewModel = NavigationService.RestoreState<SearchPeoplePageViewModel>();
             DataContext = ViewModel;
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            NavigationService.SaveState(ViewModel);
         }
 
         private async void SearchBox_OnQuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
@@ -48,8 +51,6 @@ namespace TmdbMovies.Views
         {
             if (e.ClickedItem is Person selectedPerson)
             {
-                string navId = NavigationService.GetNavigationVmId(ViewModel);
-                NavigationService.SaveState(navId, ViewModel);
                 NavigationService.NavigateTo("PersonPage", selectedPerson);
             }
         }

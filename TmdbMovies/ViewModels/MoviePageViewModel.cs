@@ -131,5 +131,12 @@ namespace TmdbMovies.ViewModels
             get { return _hasRevenue; }
             set { SetProperty(ref _hasRevenue, value); }
         }
+
+        public void Reset()
+        {
+            Cast = null;
+            Crew = null;
+            Movie = null;
+        }
     }
 }

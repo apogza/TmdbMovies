@@ -48,8 +48,6 @@ namespace TmdbMovies.UserControls
         {
             if (e.ClickedItem is Movie selectedMovie)
             {
-                string navId = NavigationService.GetNavigationVmId(MovieSearchViewModel);
-                NavigationService.SaveState(navId, MovieSearchViewModel);
                 NavigationService.NavigateTo("MoviePage", selectedMovie);
             }
         }

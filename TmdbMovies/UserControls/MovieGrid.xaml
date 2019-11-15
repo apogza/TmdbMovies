@@ -40,6 +40,7 @@
                                               MinHeight="280"
                                               CornerRadius="20"
                                               Background="LightGray"
+                                              IsCacheEnabled="True"
                                               Source="{x:Bind ThumbnailPoster}" />
                             <TextBlock Text="{x:Bind Title}"
                                        HorizontalAlignment="Center"

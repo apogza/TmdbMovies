@@ -31,6 +31,7 @@
                     <controls:ImageEx Source="{x:Bind ViewModel.Person.Profile, Mode=OneWay}"
                                       CornerRadius="20"
                                       Width="390"
+                                      IsCacheEnabled="True"
                                       VerticalAlignment="Top" />
 
                     <StackPanel Spacing="30">

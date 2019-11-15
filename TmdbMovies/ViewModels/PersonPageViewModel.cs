@@ -28,6 +28,12 @@ namespace TmdbMovies.ViewModels
             Person = await RestClient.GetEntity<Person>(query);
         }
 
+        public void Reset()
+        {
+            Person = null;
+            Movies = null;
+        }
+
         protected override string GetSearchString()
         {
             return $"discover/movie?with_people={PersonId}&page={CurrentPage}&api_key={TmdbConstants.TmdbKey}";

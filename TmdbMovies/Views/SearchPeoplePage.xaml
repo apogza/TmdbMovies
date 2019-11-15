@@ -55,6 +55,7 @@
                             <controls:ImageEx Width="185"
                                               Height="280"
                                               CornerRadius="20"
+                                              IsCacheEnabled="True"
                                               Background="LightGray"
                                               Source="{x:Bind Profile}" />
                             <TextBlock Text="{x:Bind Name}"
