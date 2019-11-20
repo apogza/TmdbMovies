@@ -11,6 +11,7 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <NavigationView ItemInvoked="NavigationView_ItemInvoked"
+                    IsSettingsVisible="False"
                     Loaded="MoviesNav_Loaded"
                     BackRequested="NavigationView_OnBackRequested"
                     IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}">
