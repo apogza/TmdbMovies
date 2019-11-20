@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FavoritesService.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="CastResult.cs" />
@@ -131,6 +132,9 @@
     <EmbeddedResource Include="Properties\Tmdb.Models.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LiteDB">
+      <Version>4.1.4</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>

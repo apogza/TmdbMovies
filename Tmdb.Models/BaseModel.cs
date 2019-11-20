@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,6 +11,7 @@ namespace TmdbMovies.Models
     [DataContract]
     public abstract class BaseModel
     {
+        [BsonId]
         [DataMember(Name="id")]
         public int TmdbId { get; set; }
     }
