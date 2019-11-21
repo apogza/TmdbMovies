@@ -55,5 +55,30 @@ namespace TmdbMovies.Views
         {
             NavigationService.SaveState(ViewModel);
         }
+
+        private void FavButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ViewModel.AddToFavorites();
+        }
+
+        private void FavButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ViewModel.RemoveFromFavorites();
+        }
+
+        private void FavButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButton toggleButton = (ToggleButton) sender;
+            
+            if (toggleButton.IsChecked == true)
+            {
+                ViewModel.AddToFavorites();
+            }
+            else
+            {
+                ViewModel.RemoveFromFavorites();
+            }
+
+        }
     }
 }
