@@ -31,12 +31,24 @@
                             HorizontalAlignment="Center"
                             Spacing="50"
                             VerticalAlignment="Top">
-                    <controls:ImageEx Source="{x:Bind ViewModel.Movie.FullPoster, Mode=OneWay}"
-                                      CornerRadius="20"
-                                      Width="390"
-                                      IsCacheEnabled="True"
-                                      VerticalAlignment="Top" />
+                    <StackPanel>
+                        <controls:ImageEx Source="{x:Bind ViewModel.Movie.FullPoster, Mode=OneWay}"
+                                          CornerRadius="20"
+                                          Width="390"
+                                          IsCacheEnabled="True"
+                                          VerticalAlignment="Top" />
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Center"
+                                    Margin="0, 10, 0, 0">
 
+                            <ToggleButton     Name="FavButton" 
+                                          IsChecked="{x:Bind ViewModel.Movie.IsFavorite, Mode=TwoWay}"
+                                          HorizontalAlignment="Center"
+                                          Click="FavButton_Click">
+                                <SymbolIcon Symbol="Favorite" />
+                            </ToggleButton>
+                        </StackPanel>
+                    </StackPanel>
                     <StackPanel Spacing="30">
                         <StackPanel>
                             <TextBlock Text="Title"

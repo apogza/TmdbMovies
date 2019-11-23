@@ -8,7 +8,7 @@ using Windows.Storage;
 
 namespace TmdbMovies.Models
 {
-    public class FavoritesService
+    public class FavoritesService :IFavoritesService
     {
         public void AddToFavorites<T>(T entity) where T : BaseModel
         {

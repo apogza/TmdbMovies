@@ -14,5 +14,8 @@ namespace TmdbMovies.Models
         [BsonId]
         [DataMember(Name="id")]
         public int TmdbId { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsFavorite { get; set; }
     }
 }

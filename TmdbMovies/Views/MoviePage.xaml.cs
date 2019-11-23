@@ -69,5 +69,19 @@ namespace TmdbMovies.Views
         {
             ViewModel.ShowFullCrew();
         }
+
+        private void FavButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButton toggleButton = (ToggleButton)sender;
+
+            if (toggleButton.IsChecked == true)
+            {
+                ViewModel.AddToFavorites();
+            }
+            else
+            {
+                ViewModel.RemoveFromFavorites();
+            }
+        }
     }
 }

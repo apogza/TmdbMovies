@@ -77,7 +77,5 @@ namespace TmdbMovies.Models
         {
             get { return $"https://image.tmdb.org/t/p/original/{PictureUrl}"; }
         }
-
-        public bool IsFavorite { get; set; }
     }
 }

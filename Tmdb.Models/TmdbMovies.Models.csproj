@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FavoritesService.cs" />
+    <Compile Include="IFavoritesService.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="CastResult.cs" />

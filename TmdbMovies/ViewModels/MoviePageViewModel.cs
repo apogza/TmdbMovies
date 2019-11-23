@@ -69,7 +69,9 @@ namespace TmdbMovies.ViewModels
         private async Task ReadMovieInfo(int movieId)
         {
             string query = $"movie/{movieId}?api_key={TmdbConstants.TmdbKey}";
-            Movie = await RestClient.GetEntity<Movie>(query);
+            Movie result = await RestClient.GetEntity<Movie>(query);
+            result.IsFavorite = IsFavorite(result);
+            Movie = result; 
 
             HasRevenue = Movie.Revenue > 0;
             HasBudget = Movie.Budget > 0;
@@ -88,6 +90,16 @@ namespace TmdbMovies.ViewModels
 
             Crew = FullCrew.Where(c => !string.IsNullOrWhiteSpace(c.PictureUrl)).Take(10);
             HasMoreCrew = Crew.Count() < FullCrew.Count();
+        }
+
+        public void RemoveFromFavorites()
+        {
+            RemoveFromFavorites(Movie);
+        }
+
+        public void AddToFavorites()
+        {
+            AddToFavorites(Movie);
         }
 
         private bool _hasMoreCast;
