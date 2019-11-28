@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TmdbMovies.Helpers;
 using TmdbMovies.Models;
 
 namespace TmdbMovies.ViewModels
@@ -37,7 +38,7 @@ namespace TmdbMovies.ViewModels
             }
             catch (InvalidOperationException)
             {
-
+                await DialogService.ShowMessageDialog("Error", "An error has occurred while retrieving data. Please check your TMDB key.");
             }
             finally
             {

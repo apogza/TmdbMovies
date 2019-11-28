@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TmdbMovies.Models;
 using System.Threading.Tasks;
+using TmdbMovies.Helpers;
 
 namespace TmdbMovies.ViewModels
 {
@@ -31,6 +32,10 @@ namespace TmdbMovies.ViewModels
                 Movies = movieResults.Results;
                 TotalPages = movieResults.TotalPages;
                 HasResults = movieResults.TotalResults > 0;
+            }
+            catch(InvalidOperationException)
+            {
+                await DialogService.ShowMessageDialog("Error", "An error has occurred while retrieving data. Please check your TMDB key.");
             }
             finally
             {

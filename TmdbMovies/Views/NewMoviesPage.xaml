@@ -19,35 +19,30 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
                 <RowDefinition Height="30" />
-                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="From:"
+            <StackPanel Grid.Row="0" 
+                        Orientation="Horizontal"
+                        Spacing="10">
+                <TextBlock Text="From:"
                        Grid.Row="0"
-                       Grid.Column="0"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Right" />
-            <DatePicker Grid.Row="0"
-                        Grid.Column="1"
+                       HorizontalAlignment="Left" />
+                <DatePicker Grid.Row="0"
                         VerticalAlignment="Center"
                         Date="{x:Bind ViewModel.BeginDate, Mode=TwoWay}" />
-            <TextBlock Text="To:"
+                <TextBlock Text="To:"
                        Grid.Row="1"
-                       Grid.Column="0"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right" />
-            <DatePicker Grid.Row="1"
-                        Grid.Column="1"
+                <DatePicker Grid.Row="1"
                         VerticalAlignment="Center"
                         Date="{x:Bind ViewModel.EndDate, Mode=TwoWay}" />
-            <StackPanel Grid.Row="2"
-                        Grid.Column="1"
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
-                        Spacing="10"
-                        HorizontalAlignment="Left">
+                        HorizontalAlignment="Center"
+                        Spacing="10">
                 <Button Content="Search"
                         Width="75"
                         Click="Search_Click" />

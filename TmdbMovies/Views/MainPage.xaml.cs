@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using TmdbMovies.Helpers;
+using TmdbMovies.Models;
 using Windows.Devices.Input;
 using Windows.System;
 using Windows.UI.Input;
@@ -20,7 +24,6 @@ namespace TmdbMovies.Views
         public MainPage()
         {
             InitializeComponent();
-
             InitNavigation();
         }
 
@@ -41,8 +44,11 @@ namespace TmdbMovies.Views
             NavigationService.NavigateTo(item.Tag.ToString());            
         }
 
-        private void MoviesNav_Loaded(object sender, RoutedEventArgs e)
+        private async void MoviesNav_Loaded(object sender, RoutedEventArgs e)
         {
+            await LoadApiKey();
+            await CheckTmdbAccess();
+
             NavigationService.NavigateTo(typeof(NewMoviesPage), true);
         }
 
@@ -83,6 +89,43 @@ namespace TmdbMovies.Views
             {
                 ContentFrame.GoForward();
             }
+        }
+
+        private async Task LoadApiKey()
+        {
+            string filePath = "Resources/api_key.txt";
+
+            if (!File.Exists(filePath))
+            {
+                await DialogService.ShowMessageDialog("Error", "API Key not found. Please place in a text file in the Resources folder.");
+                Application.Current.Exit();
+            }
+
+            string key = File.ReadAllText(filePath);
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                await DialogService.ShowMessageDialog("Error", "Please provide a valid API key.");
+                Application.Current.Exit();
+            }
+
+            TmdbConstants.TmdbKey = key;
+        }
+
+        private async Task CheckTmdbAccess()
+        {
+            try
+            {
+                string testQuery = $"movie/550?api_key={TmdbConstants.TmdbKey}";
+
+                RestClient restClient = new RestClient(TmdbConstants.BaseUri);
+                await restClient.GetEntity<Movie>(testQuery);
+            }
+            catch (InvalidOperationException)
+            {
+                await DialogService.ShowMessageDialog("Error", "Please provide a valid API key.");
+                Application.Current.Exit();
+            }
+
         }
     }
 }

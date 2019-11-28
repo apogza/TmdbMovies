@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using TmdbMovies.Models;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -30,8 +28,7 @@ namespace TmdbMovies
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
-        {
-            LoadApiKey();
+        {            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -88,24 +85,6 @@ namespace TmdbMovies
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
-        }
-
-        private void LoadApiKey()
-        {
-            string filePath = "Resources/api_key.txt";
-
-            if (!File.Exists(filePath))
-            {
-                throw new Exception("File api_key.txt not found. Please create it in the Resources folder");
-            }
-
-            string key = File.ReadAllText(filePath);
-            if (string.IsNullOrWhiteSpace(key))
-            {
-                throw new Exception("Invalid api key.");
-            }
-
-            TmdbConstants.TmdbKey = key;
         }
     }
 }

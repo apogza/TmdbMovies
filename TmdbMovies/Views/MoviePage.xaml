@@ -35,6 +35,7 @@
                         <controls:ImageEx Source="{x:Bind ViewModel.Movie.FullPoster, Mode=OneWay}"
                                           CornerRadius="20"
                                           Width="390"
+                                          Height="585"
                                           IsCacheEnabled="True"
                                           VerticalAlignment="Top" />
                         <StackPanel Orientation="Vertical"
