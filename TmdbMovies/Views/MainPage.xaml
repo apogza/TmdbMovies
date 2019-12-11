@@ -13,21 +13,22 @@
     <NavigationView ItemInvoked="NavigationView_ItemInvoked"
                     IsSettingsVisible="False"
                     Loaded="MoviesNav_Loaded"
+                    OpenPaneLength="200"
                     BackRequested="NavigationView_OnBackRequested"
                     IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}">
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="Video"
-                                Content="New Movies"
+                                x:Uid="MainPageNewMoviesLabel"
                                 Tag="NewMoviesPage"
                                 IsSelected="True"/>
             <NavigationViewItem Icon="Find"
-                                Content="Search for Movies"
+                                x:Uid="MainPageSearchMoviesLabel"
                                 Tag="SearchMoviesPage" />
             <NavigationViewItem Icon="People"
-                                Content="Search for People"
+                                x:Uid="MainPageSearchPeoplelLabel"
                                 Tag="SearchPeoplePage" />
             <NavigationViewItem Icon="Like"
-                                Content="Top Rated Movies"
+                                x:Uid="MainPageTopRatedMoviesLabel"
                                 Tag="TopRatedMoviesPage" />
         </NavigationView.MenuItems>
         <Frame x:Name="ContentFrame" />
