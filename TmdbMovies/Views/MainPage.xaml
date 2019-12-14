@@ -12,7 +12,7 @@
     <NavigationView ItemInvoked="NavigationView_ItemInvoked"
                     IsSettingsVisible="False"
                     Loaded="MoviesNav_Loaded"
-                    OpenPaneLength="200"
+                    OpenPaneLength="180"
                     BackRequested="NavigationView_OnBackRequested"
                     IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}">
         <NavigationView.MenuItems>

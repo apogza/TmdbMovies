@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
+using TmdbMovies.Helpers;
 using TmdbMovies.Models;
 
 namespace TmdbMovies.ViewModels
@@ -56,9 +57,9 @@ namespace TmdbMovies.ViewModels
                 await ReadMovieInfo(movieId);
                 await ReadMovieCast(movieId);
             }
-            catch(Exception ex)
+            catch(InvalidOperationException)
             {
-
+                await DialogService.ShowErrorMessageDialog("ErrorLabel", "NetworkOrApiError");
             }
             finally
             {

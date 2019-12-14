@@ -51,4 +51,109 @@
   <data name="MainPageNewMoviesLabel.Content" xml:space="preserve">
     <value>New Movies</value>
   </data>
+  <data name="MovieGridPrevButton.Content" xml:space="preserve">
+    <value>Prev</value>
+  </data>
+  <data name="MovieGridNextButton.Content" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="MovieGridOfTextBlock.Text" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="MoviePageTitleTextBlock.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="MoviePageReleaseDateTextBlock.Text" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="MoviePageBudgetTextBlock.Text" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="MoviePageRevenueTextBlock.Text" xml:space="preserve">
+    <value>Revenue</value>
+  </data>
+  <data name="MoviePageVoteTextBlock.Text" xml:space="preserve">
+    <value>Vote Average</value>
+  </data>
+  <data name="MoviePageLengthTextBlock.Text" xml:space="preserve">
+    <value>Length (minutes)</value>
+  </data>
+  <data name="MoviePageOverviewTextBlock.Text" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="MoviePageCastButton.Content" xml:space="preserve">
+    <value>Cast</value>
+  </data>
+  <data name="MoviePageCrewButton.Content" xml:space="preserve">
+    <value>Crew</value>
+  </data>
+  <data name="MoviePageCastButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Show Full Cast</value>
+  </data>
+  <data name="MoviePageCrewButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Show Full Crew</value>
+  </data>
+  <data name="PersonPageNameTextBlock.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PersonPageBirthdayTextBlock.Text" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="PersonPagePlaceOfBirthTextBlock.Text" xml:space="preserve">
+    <value>Place of Birth</value>
+  </data>
+  <data name="PersonPageDeathTextBlock.Text" xml:space="preserve">
+    <value>Death</value>
+  </data>
+  <data name="PersonPageBiographyTextBlock.Text" xml:space="preserve">
+    <value>Biography</value>
+  </data>
+  <data name="PersonMoviePageMoviesTextBlock.Text" xml:space="preserve">
+    <value>Movies</value>
+  </data>
+  <data name="NewMoviesFromTextBlock.Text" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <data name="NewMoviesToTextBlock.Text" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="NewMoviesSearchButton.Content" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="NewMoviesResetButton.Content" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SearchMoviesSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Movie Title</value>
+  </data>
+  <data name="SearchPeopleSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TopRatedMoviesMainTextBlock.Text" xml:space="preserve">
+    <value>Top Rated Movies Since:</value>
+  </data>
+  <data name="TopRatedMoviesSearchButton.Content" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="TopRateMoviesResetButton.Content" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ApiError" xml:space="preserve">
+    <value>Please provide a valid API key.</value>
+  </data>
+  <data name="MissingApiError" xml:space="preserve">
+    <value>API Key not found. Please place in a text file in the Resources folder.</value>
+  </data>
+  <data name="ErrorLabel" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="NetworkError" xml:space="preserve">
+    <value>No Internet Connection. Please connect to the Internet.</value>
+  </data>
+  <data name="NetworkOrApiError" xml:space="preserve">
+    <value>An error has occurred. Please check your API key or network connection.</value>
+  </data>
+  <data name="OkLabel" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

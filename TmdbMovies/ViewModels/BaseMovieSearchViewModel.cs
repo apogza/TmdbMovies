@@ -35,7 +35,7 @@ namespace TmdbMovies.ViewModels
             }
             catch(InvalidOperationException)
             {
-                await DialogService.ShowMessageDialog("Error", "An error has occurred while retrieving data. Please check your TMDB key.");
+                await DialogService.ShowErrorMessageDialog("ErrorLabel", "NetworkOrApiError");
             }
             finally
             {

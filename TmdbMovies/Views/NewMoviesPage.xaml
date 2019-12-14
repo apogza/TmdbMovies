@@ -23,14 +23,14 @@
             <StackPanel Grid.Row="0" 
                         Orientation="Horizontal"
                         Spacing="10">
-                <TextBlock Text="From:"
+                <TextBlock x:Uid="NewMoviesFromTextBlock"
                        Grid.Row="0"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left" />
                 <DatePicker Grid.Row="0"
                         VerticalAlignment="Center"
                         Date="{x:Bind ViewModel.BeginDate, Mode=TwoWay}" />
-                <TextBlock Text="To:"
+                <TextBlock x:Uid="NewMoviesToTextBlock"
                        Grid.Row="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right" />
@@ -43,10 +43,10 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Spacing="10">
-                <Button Content="Search"
+                <Button x:Uid="NewMoviesSearchButton"
                         Width="75"
                         Click="Search_Click" />
-                <Button Content="Reset"
+                <Button x:Uid="NewMoviesResetButton"
                         Width="75"
                         Click="Reset_Click" />
             </StackPanel>

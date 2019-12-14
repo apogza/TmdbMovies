@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TmdbMovies.Helpers;
 using TmdbMovies.Models;
+using Windows.ApplicationModel.Resources;
 
 namespace TmdbMovies.ViewModels
 {
@@ -38,7 +39,12 @@ namespace TmdbMovies.ViewModels
             }
             catch (InvalidOperationException)
             {
-                await DialogService.ShowMessageDialog("Error", "An error has occurred while retrieving data. Please check your TMDB key.");
+                var resourceLoader = ResourceLoader.GetForCurrentView();
+                string errorMessage = resourceLoader.GetString("ApiError");
+                string errorTitle = resourceLoader.GetString("ErrorLabel");
+
+
+                await DialogService.ShowSimpleMessageDialog(errorTitle, errorMessage);
             }
             finally
             {

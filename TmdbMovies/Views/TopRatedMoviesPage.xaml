@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Top Rated Movies Since:"
+            <TextBlock x:Uid="TopRatedMoviesMainTextBlock"
                        Grid.Row="0"
                        Grid.Column="0"
                        HorizontalAlignment="Center"
@@ -40,10 +40,10 @@
                          Orientation="Horizontal"
                          Spacing="10"
                          HorizontalAlignment="Left">
-                <Button Content="Search"
+                <Button x:Uid="TopRatedMoviesSearchButton"
                         Click="Search_Click"
                         Width="75" />
-                <Button Content="Reset"
+                <Button x:Uid="TopRateMoviesResetButton"
                         Click="Reset_Click"
                         Width="75" />
             </StackPanel>

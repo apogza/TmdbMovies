@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using TmdbMovies.Helpers;
 using TmdbMovies.Models;
+using Windows.ApplicationModel.Resources;
 using Windows.Devices.Input;
 using Windows.System;
 using Windows.UI.Input;
@@ -46,6 +48,7 @@ namespace TmdbMovies.Views
 
         private async void MoviesNav_Loaded(object sender, RoutedEventArgs e)
         {
+            await CheckInternetConnection();
             await LoadApiKey();
             await CheckTmdbAccess();
 
@@ -93,18 +96,26 @@ namespace TmdbMovies.Views
 
         private async Task LoadApiKey()
         {
-            string filePath = "Resources/api_key.txt";
+            string filePath = TmdbConstants.ApiKeyFile;
 
             if (!File.Exists(filePath))
             {
-                await DialogService.ShowMessageDialog("Error", "API Key not found. Please place in a text file in the Resources folder.");
+                var resourceLoader = ResourceLoader.GetForCurrentView();
+                string errorMessage = resourceLoader.GetString("MainPage/MissingApiError");
+                string errorTitle = resourceLoader.GetString("MainPage/ErrorLabel");
+
+                await DialogService.ShowSimpleMessageDialog(errorTitle, errorMessage);
                 Application.Current.Exit();
             }
 
             string key = File.ReadAllText(filePath);
             if (string.IsNullOrWhiteSpace(key))
             {
-                await DialogService.ShowMessageDialog("Error", "Please provide a valid API key.");
+                var resourceLoader = ResourceLoader.GetForCurrentView();
+                string errorMessage = resourceLoader.GetString("MainPage/ApiError");
+                string errorTitle = resourceLoader.GetString("MainPage/ErrorLabel");
+
+                await DialogService.ShowSimpleMessageDialog(errorTitle, errorMessage);
                 Application.Current.Exit();
             }
 
@@ -122,10 +133,23 @@ namespace TmdbMovies.Views
             }
             catch (InvalidOperationException)
             {
-                await DialogService.ShowMessageDialog("Error", "Please provide a valid API key.");
+                await DialogService.ShowErrorMessageDialog("ErrorLabel", "ApiError");
                 Application.Current.Exit();
             }
+        }
 
+        private async Task CheckInternetConnection()
+        {
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                var resourceLoader = ResourceLoader.GetForCurrentView();
+                string errorMessage = resourceLoader.GetString("NetworkError");
+                string errorTitle = resourceLoader.GetString("ErrorLabel");
+
+                await DialogService.ShowSimpleMessageDialog(errorTitle, errorMessage);
+                
+                Application.Current.Exit();
+            }
         }
     }
 }

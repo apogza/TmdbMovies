@@ -42,7 +42,7 @@
                                     HorizontalAlignment="Center"
                                     Margin="0, 10, 0, 0">
 
-                            <ToggleButton     Name="FavButton" 
+                            <ToggleButton Name="FavButton" 
                                           IsChecked="{x:Bind ViewModel.Movie.IsFavorite, Mode=TwoWay}"
                                           HorizontalAlignment="Center"
                                           Click="FavButton_Click">
@@ -52,31 +52,31 @@
                     </StackPanel>
                     <StackPanel Spacing="30">
                         <StackPanel>
-                            <TextBlock Text="Title"
+                            <TextBlock x:Uid="MoviePageTitleTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Movie.Title, Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Release Date"
+                            <TextBlock x:Uid="MoviePageReleaseDateTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Movie.ReleaseDate, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:dd MMM yyyy}', Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel Visibility="{x:Bind ViewModel.HasBudget, Converter={StaticResource BoolToVisib}, Mode=OneWay}">
-                            <TextBlock Text="Budget"
+                            <TextBlock x:Uid="MoviePageBudgetTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Movie.Budget, Converter={StaticResource StringFormatter},  ConverterParameter='{}{0:C0}', Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel Visibility="{x:Bind ViewModel.HasRevenue, Converter={StaticResource BoolToVisib}, Mode=OneWay}">
-                            <TextBlock Text="Revenue"
+                            <TextBlock x:Uid="MoviePageRevenueTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Movie.Revenue, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:C0}', Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Vote Average"
+                            <TextBlock x:Uid="MoviePageVoteTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <RatingControl IsReadOnly="True"                                            
                                            Value="{x:Bind ViewModel.Movie.VoteAverage, Mode=OneWay}" 
@@ -85,22 +85,22 @@
                         </StackPanel>
 
                         <StackPanel Visibility="{x:Bind ViewModel.Movie.Duration.HasValue, Converter={StaticResource BoolToVisib}, Mode=OneWay}">
-                            <TextBlock Text="Length (minutes)"
+                            <TextBlock x:Uid="MoviePageLengthTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Movie.Duration, Mode=OneWay}" />
                         </StackPanel>
-                        <StackPanel Width="500">
-                            <TextBlock Text="Overview"
+                        <StackPanel>
+                            <TextBlock x:Uid="MoviePageOverviewTextBlock"                                       
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock TextWrapping="WrapWholeWords"
+                                       MaxWidth="400"                                       
                                        Text="{x:Bind ViewModel.Movie.Overview, Mode=OneWay}" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
 
-                <HyperlinkButton Content="Cast"
-                            Style="{StaticResource HyperlinkSectionHeader}"
-                            ToolTipService.ToolTip="Show Full Cast"
+                <HyperlinkButton x:Uid="MoviePageCastButton"
+                            Style="{StaticResource HyperlinkSectionHeader}"                            
                             IsEnabled="{x:Bind ViewModel.HasMoreCast, Mode=OneWay}" 
                             Click="ShowFullCast_Click"
                             HorizontalAlignment="Center"/>
@@ -142,14 +142,12 @@
                     </GridView.ItemsPanel>
                 </GridView>
 
-                <HyperlinkButton Content="Crew"
+                <HyperlinkButton x:Uid="MoviePageCrewButton"
                                 Style="{StaticResource HyperlinkSectionHeader}"
                                 Click="ShowFullCrew_Click"
-                                ToolTipService.ToolTip="Show Full Crew"
                                 IsEnabled="{x:Bind ViewModel.HasMoreCrew, Mode=OneWay}"
                                 HorizontalAlignment="Center"/>
 
-                
                 <GridView ItemsSource="{x:Bind ViewModel.Crew, Mode=OneWay}"
                           IsItemClickEnabled="True"
                           ItemClick="ListViewBase_OnItemClick"

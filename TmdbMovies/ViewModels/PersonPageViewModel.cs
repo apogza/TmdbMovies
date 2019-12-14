@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TmdbMovies.Helpers;
 using TmdbMovies.Models;
 
 namespace TmdbMovies.ViewModels
@@ -10,7 +11,6 @@ namespace TmdbMovies.ViewModels
     public class PersonPageViewModel: BaseMovieSearchViewModel
     {
         public int PersonId { get; set; }
-
 
         private Person _person;
         public Person Person
@@ -42,6 +42,21 @@ namespace TmdbMovies.ViewModels
         public void RemoveFromFavorites()
         {
             RemoveFromFavorites(Person);
+        }
+
+        public override async void ResetSearch()
+        {
+            base.ResetSearch();
+            Reset();
+            try
+            {
+                await ReadInfo();
+                await Search(true);
+            }
+            catch(InvalidOperationException)
+            {
+                await DialogService.ShowErrorMessageDialog("ErrorLabel", "NetworkOrApiError");
+            }
         }
 
         protected override string GetSearchString()

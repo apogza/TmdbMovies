@@ -65,7 +65,7 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Visibility="{x:Bind MovieSearchViewModel.HasResults, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}">
-                <Button Content="Prev"
+                <Button x:Uid="MovieGridPrevButton"
                         Click="Prev_Click"
                         Width="50" />
                 <TextBox Text="{x:Bind MovieSearchViewModel.CurrentPage, Mode=TwoWay}"
@@ -74,7 +74,7 @@
                            VerticalAlignment="Center" />
                 <TextBlock Text="{x:Bind MovieSearchViewModel.TotalPages, Mode=TwoWay}"
                            VerticalAlignment="Center" />
-                <Button Content="Next"
+                <Button x:Uid="MovieGridNextButton"
                         Click="Next_Click"
                         Width="50" />
             </StackPanel>

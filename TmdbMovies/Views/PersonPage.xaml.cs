@@ -43,10 +43,7 @@ namespace TmdbMovies.Views
 
                 if (refreshSearch)
                 {
-                    ViewModel.Reset();
-
-                    await ViewModel.ReadInfo();
-                    await ViewModel.Search(true);
+                    ViewModel.ResetSearch();
                 }
             }
         }

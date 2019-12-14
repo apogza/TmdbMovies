@@ -20,7 +20,7 @@
                     VerticalAlignment="Center"
                     Spacing="10">
             <SearchBox Width="300"
-                       PlaceholderText="Movie Title"
+                       x:Uid="SearchMoviesSearchBox"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        QueryText="{x:Bind Path=ViewModel.SearchString, Mode=TwoWay}"

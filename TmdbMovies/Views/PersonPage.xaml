@@ -50,40 +50,41 @@
 
                     <StackPanel Spacing="30">
                         <StackPanel>
-                            <TextBlock Text="Name"
+                            <TextBlock x:Uid="PersonPageNameTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Person.Name, Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Birthday"
+                            <TextBlock x:Uid="PersonPageBirthdayTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Person.Birthday, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:dd MMM yyyy}', Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Place of Birth"
+                            <TextBlock x:Uid="PersonPagePlaceOfBirthTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Person.PlaceOfBirth, Mode=OneWay}" />
                         </StackPanel>
 
                         <StackPanel Visibility="{x:Bind ViewModel.Person.DeathdayJson, Converter={StaticResource StringVisibility}, Mode=OneWay}">
-                            <TextBlock Text="Death"
+                            <TextBlock x:Uid="PersonPageDeathTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock Text="{x:Bind ViewModel.Person.Deathday, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:dd MMM yyyy}', Mode=OneWay}" />
                         </StackPanel>
 
-                        <StackPanel Width="500">
-                            <TextBlock Text="Biography"
+                        <StackPanel>
+                            <TextBlock x:Uid="PersonPageBiographyTextBlock"
                                        Style="{StaticResource SectionHeader}" />
                             <TextBlock TextWrapping="WrapWholeWords"
+                                       MaxWidth="400"
                                        Text="{x:Bind ViewModel.Person.Biography, Mode=OneWay}" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
                 <TextBlock Style="{StaticResource SectionHeader}"
                            HorizontalAlignment="Center"
-                           Text="Movies" />
+                           x:Uid="PersonMoviePageMoviesTextBlock" />
                 <usercontrols:MovieGrid MovieSearchViewModel="{x:Bind ViewModel}" />
             </StackPanel>
         </ScrollViewer>
