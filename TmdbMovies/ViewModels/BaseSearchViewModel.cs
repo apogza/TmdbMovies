@@ -74,9 +74,10 @@ namespace TmdbMovies.ViewModels
 
         public abstract Task Search(bool shouldRefreshCurrentPage);
 
-        public virtual void ResetSearch()
+        public virtual Task ResetSearch()
         {
             HasResults = false;
+            return Task.CompletedTask;
         }
 
         protected abstract string GetSearchString();

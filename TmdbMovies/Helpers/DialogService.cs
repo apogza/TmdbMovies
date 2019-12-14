@@ -29,8 +29,8 @@ namespace TmdbMovies.Helpers
         public static async Task ShowErrorMessageDialog(string errorTitleKey, string messageKey)
         {
             var resourceLoader = ResourceLoader.GetForCurrentView();
-            string errorMessage = resourceLoader.GetString(errorTitleKey);
-            string errorTitle = resourceLoader.GetString(messageKey);
+            string errorMessage = resourceLoader.GetString(messageKey);
+            string errorTitle = resourceLoader.GetString(errorTitleKey);
 
             await ShowSimpleMessageDialog(errorTitle, errorMessage);
         }

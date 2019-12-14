@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TmdbMovies.Models;
 
 namespace TmdbMovies.ViewModels
@@ -27,13 +28,13 @@ namespace TmdbMovies.ViewModels
             ResetSearch();
         }
 
-        public override void ResetSearch()
+        public override Task ResetSearch()
         {
             BeginDate = DateTime.Today.AddMonths(-3);
             EndDate = DateTime.Today;
             CurrentPage = 1;
 
-            base.ResetSearch();
+            return base.ResetSearch();
         }
 
         protected override string GetSearchString()

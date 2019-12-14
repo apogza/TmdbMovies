@@ -45,10 +45,12 @@ namespace TmdbMovies.ViewModels
             return;
         }
 
-        public override void ResetSearch()
+        public override Task ResetSearch()
         {
             base.ResetSearch();
             Movies = null;
+
+            return Task.CompletedTask;
         }
     }
 }

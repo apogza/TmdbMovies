@@ -44,9 +44,9 @@ namespace TmdbMovies.ViewModels
             RemoveFromFavorites(Person);
         }
 
-        public override async void ResetSearch()
+        public override async Task ResetSearch()
         {
-            base.ResetSearch();
+            await base.ResetSearch();
             Reset();
             try
             {
