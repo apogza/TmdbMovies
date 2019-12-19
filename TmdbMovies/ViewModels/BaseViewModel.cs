@@ -1,4 +1,5 @@
 ﻿using TmdbMovies.Models;
+using System.Collections.Generic;
 
 namespace TmdbMovies.ViewModels
 {
@@ -29,6 +30,11 @@ namespace TmdbMovies.ViewModels
         protected bool IsFavorite<T>(T entity) where T: BaseModel
         {
             return FavoritesService.IsFavorite(entity);
+        }
+
+        protected IEnumerable<T> GetFavorites<T>() where T : BaseModel
+        {
+            return FavoritesService.GetFavorites<T>();
         }
     }
 }

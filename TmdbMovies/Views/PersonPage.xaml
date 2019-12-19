@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      xmlns:interactivity="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
       xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
       xmlns:usercontrols="using:TmdbMovies.UserControls"
       mc:Ignorable="d"
@@ -43,7 +44,7 @@
                             <ToggleButton Name="FavButton" 
                                           IsChecked="{x:Bind ViewModel.Person.IsFavorite, Mode=TwoWay}"
                                           Click="FavButton_Click">
-                                <SymbolIcon Symbol="Favorite" />
+                                <SymbolIcon Symbol="AddFriend" />
                             </ToggleButton>
                         </StackPanel>
                     </StackPanel>

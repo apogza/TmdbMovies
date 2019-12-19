@@ -20,15 +20,21 @@
                                 x:Uid="MainPageNewMoviesLabel"
                                 Tag="NewMoviesPage"
                                 IsSelected="True"/>
+            <NavigationViewItem Icon="Like"
+                                x:Uid="MainPageTopRatedMoviesLabel"
+                                Tag="TopRatedMoviesPage" />
+            <NavigationViewItem Icon="Favorite"
+                                x:Uid="FavoriteMoviesLabel"
+                                Tag="FavoritesPage" />
+            <NavigationViewItem Icon="AddFriend"
+                                x:Uid="WatchListLabel" 
+                                Tag="WatchlistPage"/>
             <NavigationViewItem Icon="Find"
                                 x:Uid="MainPageSearchMoviesLabel"
                                 Tag="SearchMoviesPage" />
             <NavigationViewItem Icon="People"
                                 x:Uid="MainPageSearchPeoplelLabel"
                                 Tag="SearchPeoplePage" />
-            <NavigationViewItem Icon="Like"
-                                x:Uid="MainPageTopRatedMoviesLabel"
-                                Tag="TopRatedMoviesPage" />
         </NavigationView.MenuItems>
         <Frame x:Name="ContentFrame" />
     </NavigationView>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -45,6 +46,8 @@ namespace TmdbMovies.Views
                 {
                     await ViewModel.ResetSearch();
                 }
+
+                SetFavButtonToolTip();
             }
         }
 
@@ -65,6 +68,21 @@ namespace TmdbMovies.Views
             {
                 ViewModel.RemoveFromFavorites();
             }
+
+            SetFavButtonToolTip();
+        }
+
+        private void SetFavButtonToolTip()
+        {
+            var resourceLoader = ResourceLoader.GetForCurrentView();
+            string toolTip = resourceLoader.GetString("PersonPageAddToWatchListToolTip");
+            
+            if (ViewModel.Person != null && ViewModel.Person.IsFavorite)
+            {
+                toolTip = resourceLoader.GetString("PersonPageRemoveFromWatchlistToolTip");
+            }
+
+            ToolTipService.SetToolTip(FavButton, toolTip);
         }
     }
 }
