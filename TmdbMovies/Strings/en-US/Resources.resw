@@ -129,13 +129,13 @@
   <data name="MainPageNewMoviesLabel.Content" xml:space="preserve">
     <value>New Movies</value>
   </data>
-  <data name="MovieGridPrevButton.Content" xml:space="preserve">
+  <data name="PaginatorPrevButton.Content" xml:space="preserve">
     <value>Prev</value>
   </data>
-  <data name="MovieGridNextButton.Content" xml:space="preserve">
+  <data name="PaginatorNextButton.Content" xml:space="preserve">
     <value>Next</value>
   </data>
-  <data name="MovieGridOfTextBlock.Text" xml:space="preserve">
+  <data name="PaginatorOfTextBlock.Text" xml:space="preserve">
     <value>of</value>
   </data>
   <data name="MoviePageTitleTextBlock.Text" xml:space="preserve">

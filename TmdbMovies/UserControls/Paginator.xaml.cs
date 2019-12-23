@@ -129,7 +129,9 @@ namespace TmdbMovies.UserControls
                 string newValue = new string(currentPageTextBox.Text.Where(char.IsDigit).ToArray());
                 currentPageTextBox.Text = string.IsNullOrWhiteSpace(newValue) ? "1" : newValue;
 
-                CurrentPage = string.IsNullOrWhiteSpace(newValue) ? 1 : Convert.ToInt32(newValue);
+                int newPage = string.IsNullOrWhiteSpace(newValue) ? 1 : Convert.ToInt32(newValue);
+                CurrentPage = newPage >= 1 && newPage <= TotalPages ? newPage : 1;
+
                 OnPageChange?.Invoke(sender, CurrentPage);
             }
         }

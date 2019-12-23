@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
-             mc:Ignorable="d"
+    mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
@@ -20,21 +20,21 @@
                     Spacing="10"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                Visibility="{x:Bind HasResults, Converter={StaticResource BoolToVisibility}, Mode=OneWay}">
-            <Button Content="Prev"
+                    Visibility="{x:Bind HasResults, Converter={StaticResource BoolToVisibility}, Mode=OneWay}">
+            <Button x:Uid="PaginatorPrevButton"
                     Click="Prev_Click"
-                IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
+                    IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
                     Width="50" />
             <TextBox Text="{x:Bind CurrentPage, Mode=TwoWay}"
                      IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
                      KeyUp="UIElement_OnKeyUp" />
-            <TextBlock Text="of"
+            <TextBlock x:Uid="PaginatorOfTextBlock"
                        VerticalAlignment="Center" />
             <TextBlock Text="{x:Bind TotalPages, Mode=OneWay}"
                        VerticalAlignment="Center" />
-            <Button Content="Next"
+            <Button x:Uid="PaginatorNextButton"
                     Click="Next_Click"
-                IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
+                    IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
                     Width="50" />
         </StackPanel>
 </UserControl>
