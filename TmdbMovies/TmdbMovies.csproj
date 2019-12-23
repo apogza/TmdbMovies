@@ -121,6 +121,9 @@
     </Compile>
     <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="NavigationService.cs" />
+    <Compile Include="UserControls\Paginator.xaml.cs">
+      <DependentUpon>Paginator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseSearchViewModel.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\FavoritesViewModel.cs" />
@@ -236,6 +239,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UserControls\Paginator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FavoritesPage.xaml">
       <SubType>Designer</SubType>

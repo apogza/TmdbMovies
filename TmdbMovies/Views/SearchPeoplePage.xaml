@@ -8,6 +8,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:models="using:TmdbMovies.Models"
     xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    xmlns:userControls="using:TmdbMovies.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
@@ -72,34 +73,17 @@
                 </GridView.ItemsPanel>
             </GridView>
 
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="1"
-                        Margin="10"
-                        Spacing="10"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Visibility="{x:Bind ViewModel.HasResults, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}">
-                <Button Content="Prev"
-                        Click="Prev_Click"
-                        IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}" 
-                        Width="50" />
-                <TextBox Text="{x:Bind ViewModel.CurrentPage, Mode=TwoWay}"
-                         IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
-                         TextChanging="TextBox_TextChanging" />
-                <TextBlock Text="of"
-                           VerticalAlignment="Center" />
-                <TextBlock Text="{x:Bind ViewModel.TotalPages, Mode=TwoWay}"
-                           VerticalAlignment="Center" />
-                <Button Content="Next"
-                        Click="Next_Click"
-                        IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
-                        Width="50" />
-            </StackPanel>
+            <userControls:Paginator Grid.Row="1"
+                                    CurrentPage="{x:Bind ViewModel.CurrentPage, Mode=OneWay}"
+                                    TotalPages="{x:Bind ViewModel.TotalPages, Mode=OneWay}"
+                                    HasResults="{x:Bind ViewModel.HasResults, Mode=OneWay}"
+                                    IsSearching="{x:Bind ViewModel.IsSearching, Mode=OneWay}"
+                                    OnPageChange="Paginator_OnOnPageChange" />
         </Grid>
         <ProgressRing Grid.Row="1"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
-                      IsActive="{x:Bind ViewModel.IsSearching, Mode=TwoWay}"
+                      IsActive="{x:Bind ViewModel.IsSearching, Mode=OneWay}"
                       Width="100"
                       Height="100" />
         </Grid>

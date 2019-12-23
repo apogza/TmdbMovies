@@ -43,7 +43,6 @@ namespace TmdbMovies.ViewModels
                 string errorMessage = resourceLoader.GetString("ApiError");
                 string errorTitle = resourceLoader.GetString("ErrorLabel");
 
-
                 await DialogService.ShowSimpleMessageDialog(errorTitle, errorMessage);
             }
             finally

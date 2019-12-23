@@ -55,20 +55,9 @@ namespace TmdbMovies.Views
             }
         }
 
-        private void Prev_Click(object sender, RoutedEventArgs e)
+        private void Paginator_OnOnPageChange(object sender, int e)
         {
-            ViewModel.PrevPage();
-        }
-
-        private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
-        {
-            string newValue = new string(sender.Text.Where(char.IsDigit).ToArray());
-            sender.Text = string.IsNullOrWhiteSpace(newValue) ? "1" : newValue;
-        }
-
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.NextPage();
+            ViewModel.OnPageChange(e);
         }
     }
 }

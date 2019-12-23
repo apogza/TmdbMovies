@@ -15,11 +15,7 @@ namespace TmdbMovies.ViewModels
             get { return _currentPage; }
             set
             {
-                if (CurrentPage != value && value > 0 && (TotalPages == 0 || value <= TotalPages))
-                {
-                    SetProperty(ref _currentPage, value);
-                    OnChangePage();
-                }
+                SetProperty(ref _currentPage, value);
             }
         }
 
@@ -57,18 +53,13 @@ namespace TmdbMovies.ViewModels
             _currentPage = 1;
         }
 
-        public void PrevPage()
+        public virtual async void OnPageChange(int currentPage = 1)
         {
-            CurrentPage -= 1;
-        }
+            if (CurrentPage != currentPage)
+            {
+                CurrentPage = currentPage;
+            }
 
-        public void NextPage()
-        {
-            CurrentPage += 1;
-        }
-
-        protected virtual async void OnChangePage()
-        {
             await Search(false);
         }
 

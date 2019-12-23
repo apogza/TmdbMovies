@@ -38,12 +38,6 @@ namespace TmdbMovies.UserControls
 
         }
 
-        private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
-        {
-            string newValue = new string(sender.Text.Where(char.IsDigit).ToArray());
-            sender.Text = string.IsNullOrWhiteSpace(newValue) ? "1" : newValue;
-        }
-
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is Movie selectedMovie)
@@ -52,15 +46,9 @@ namespace TmdbMovies.UserControls
             }
         }
 
-        private void Prev_Click(object sender, RoutedEventArgs e)
+        private void Paginator_OnOnPageChange(object sender, int e)
         {
-            MovieSearchViewModel.PrevPage();
+            MovieSearchViewModel.OnPageChange(e);
         }
-
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
-            MovieSearchViewModel.NextPage();
-        }
-
     }
 }

@@ -58,26 +58,12 @@
                 </GridView.ItemsPanel>
             </GridView>
 
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="1"
-                        Margin="10"
-                        Spacing="10"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Visibility="{x:Bind MovieSearchViewModel.HasResults, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}">
-                <Button x:Uid="MovieGridPrevButton"
-                        Click="Prev_Click"
-                        Width="50" />
-                <TextBox Text="{x:Bind MovieSearchViewModel.CurrentPage, Mode=TwoWay}"
-                         TextChanging="TextBox_TextChanging" />
-                <TextBlock Text="of"
-                           VerticalAlignment="Center" />
-                <TextBlock Text="{x:Bind MovieSearchViewModel.TotalPages, Mode=TwoWay}"
-                           VerticalAlignment="Center" />
-                <Button x:Uid="MovieGridNextButton"
-                        Click="Next_Click"
-                        Width="50" />
-            </StackPanel>
+            <local:Paginator Grid.Row="1"
+                             CurrentPage="{x:Bind MovieSearchViewModel.CurrentPage, Mode=OneWay}"
+                             TotalPages="{x:Bind MovieSearchViewModel.TotalPages, Mode=OneWay}"
+                             HasResults="{x:Bind MovieSearchViewModel.HasResults, Mode=OneWay}"
+                             IsSearching="{x:Bind MovieSearchViewModel.IsSearching, Mode=OneWay}" 
+                             OnPageChange="Paginator_OnOnPageChange"/>
         </Grid>
         <ProgressRing Grid.Row="0"
                       HorizontalAlignment="Center"
