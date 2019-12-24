@@ -11,12 +11,12 @@ namespace TmdbMovies.ViewModels
 {
     public class SearchPeoplePageViewModel : BaseSearchViewModel
     {
-        private IEnumerable<Person> _actors;
+        private IEnumerable<Person> _people;
 
         public IEnumerable<Person> People
         {
-            get { return _actors;}
-            set { SetProperty(ref _actors, value); }
+            get { return _people;}
+            set { SetProperty(ref _people, value); }
         }
 
         public override async Task Search(bool shouldRefreshCurrentPage)

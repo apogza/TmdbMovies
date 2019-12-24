@@ -13,10 +13,7 @@ namespace TmdbMovies.ViewModels
         public int CurrentPage
         {
             get { return _currentPage; }
-            set
-            {
-                SetProperty(ref _currentPage, value);
-            }
+            set { SetProperty(ref _currentPage, value); }
         }
 
         private string _searchString;

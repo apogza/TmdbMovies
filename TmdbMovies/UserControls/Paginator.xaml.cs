@@ -119,15 +119,13 @@ namespace TmdbMovies.UserControls
         {
             if (e.Key == VirtualKey.Enter)
             {
-                var currentPageTextBox = sender as TextBox;
-
-                if (currentPageTextBox == null)
+                if (sender as TextBox == null)
                 {
                     return;
                 }
 
-                string newValue = new string(currentPageTextBox.Text.Where(char.IsDigit).ToArray());
-                currentPageTextBox.Text = string.IsNullOrWhiteSpace(newValue) ? "1" : newValue;
+                string newValue = new string((sender as TextBox).Text.Where(char.IsDigit).ToArray());
+                (sender as TextBox).Text = string.IsNullOrWhiteSpace(newValue) ? "1" : newValue;
 
                 int newPage = string.IsNullOrWhiteSpace(newValue) ? 1 : Convert.ToInt32(newValue);
                 CurrentPage = newPage >= 1 && newPage <= TotalPages ? newPage : 1;
