@@ -30,7 +30,11 @@ namespace TmdbMovies.ViewModels
         public int TotalPages
         {
             get { return _totalPages; }
-            set { SetProperty(ref _totalPages, value); }
+            set 
+            { 
+                SetProperty(ref _totalPages, value);
+                RaisePropertyChanged(nameof(HasPages));
+            }
         }
 
         private bool _hasResults;
@@ -38,6 +42,11 @@ namespace TmdbMovies.ViewModels
         {
             get { return _hasResults; }
             set { SetProperty(ref _hasResults, value); }
+        }
+
+        public bool HasPages
+        {
+            get { return TotalPages > 1; }
         }
 
         private bool _isSearching;

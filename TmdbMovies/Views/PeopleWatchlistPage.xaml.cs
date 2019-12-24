@@ -21,27 +21,27 @@ namespace TmdbMovies.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class FavoritesPage : Page
+    public sealed partial class PeopleWatchlistPage : Page
     {
-        public FavoritesViewModel ViewModel { get; set; }
+        public WatchlistViewModel ViewModel { get; private set; }
 
-        public FavoritesPage()
+        public PeopleWatchlistPage()
         {
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ViewModel = NavigationService.RestoreState<FavoritesViewModel>();
-            ViewModel.ReadInfo();
-        }
-
-        private void MovieGridView_OnItemClick(object sender, ItemClickEventArgs e)
+        private void ListViewBase_OnItemClick(object sender, ItemClickEventArgs e)
         {
             //throw new NotImplementedException();
         }
 
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ViewModel = NavigationService.RestoreState<WatchlistViewModel>();
+            ViewModel.ReadInfo();
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             NavigationService.SaveState(ViewModel);
         }

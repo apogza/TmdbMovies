@@ -121,8 +121,14 @@
     </Compile>
     <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="NavigationService.cs" />
+    <Compile Include="UserControls\MovieGrid.xaml.cs">
+      <DependentUpon>MovieGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Paginator.xaml.cs">
       <DependentUpon>Paginator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PeopleGrid.xaml.cs">
+      <DependentUpon>PeopleGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseSearchViewModel.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
@@ -130,15 +136,15 @@
     <Compile Include="ViewModels\PersonPageViewModel.cs" />
     <Compile Include="ViewModels\SearchPeoplePageViewModel.cs" />
     <Compile Include="ViewModels\WatchlistViewModel.cs" />
-    <Compile Include="Views\FavoritesPage.xaml.cs">
-      <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    <Compile Include="Views\MoviesWatchlistPage.xaml.cs">
+      <DependentUpon>MoviesWatchlistPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\MovieGrid.xaml.cs">
-      <DependentUpon>MovieGrid.xaml</DependentUpon>
+    <Compile Include="UserControls\SearchMovieGrid.xaml.cs">
+      <DependentUpon>SearchMovieGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseMovieSearchViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -164,8 +170,8 @@
     <Compile Include="Views\TopRatedMoviesPage.xaml.cs">
       <DependentUpon>TopRatedMoviesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WatchlistPage.xaml.cs">
-      <DependentUpon>WatchlistPage.xaml</DependentUpon>
+    <Compile Include="Views\PeopleWatchlistPage.xaml.cs">
+      <DependentUpon>PeopleWatchlistPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -240,11 +246,19 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
+    <Page Include="UserControls\MovieGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Paginator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FavoritesPage.xaml">
+    <Page Include="UserControls\PeopleGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MoviesWatchlistPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,7 +266,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\MovieGrid.xaml">
+    <Page Include="UserControls\SearchMovieGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,7 +294,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WatchlistPage.xaml">
+    <Page Include="Views\PeopleWatchlistPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -47,14 +47,6 @@ namespace TmdbMovies.Views
             await ViewModel.Search(true);
         }
 
-        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is Person selectedPerson)
-            {
-                NavigationService.NavigateTo("PersonPage", selectedPerson);
-            }
-        }
-
         private void Paginator_OnOnPageChange(object sender, int e)
         {
             ViewModel.OnPageChange(e);

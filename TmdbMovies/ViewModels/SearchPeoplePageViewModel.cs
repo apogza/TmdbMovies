@@ -13,7 +13,7 @@ namespace TmdbMovies.ViewModels
     {
         private IEnumerable<Person> _actors;
 
-        public IEnumerable<Person> Actors
+        public IEnumerable<Person> People
         {
             get { return _actors;}
             set { SetProperty(ref _actors, value); }
@@ -33,7 +33,7 @@ namespace TmdbMovies.ViewModels
             try
             {
                 SearchResults<Person> actorResults = await RestClient.GetSearchResults<Person>(query);
-                Actors = actorResults.Results;
+                People = actorResults.Results;
                 TotalPages = actorResults.TotalPages;
                 HasResults = actorResults.TotalResults > 0;
             }

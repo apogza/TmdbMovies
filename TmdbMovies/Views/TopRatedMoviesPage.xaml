@@ -49,7 +49,7 @@
             </StackPanel>
         </Grid>
 
-        <userControls:MovieGrid Grid.Row="1"
+        <userControls:SearchMovieGrid Grid.Row="1"
                                 MovieSearchViewModel="{x:Bind ViewModel}" />
     </Grid>
 </Page>

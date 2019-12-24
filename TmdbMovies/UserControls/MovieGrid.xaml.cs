@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Windows.Input;
 using TmdbMovies.Models;
-using TmdbMovies.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,20 +20,19 @@ namespace TmdbMovies.UserControls
 {
     public sealed partial class MovieGrid : UserControl
     {
-        public BaseMovieSearchViewModel MovieSearchViewModel
-        {
-            get { return (BaseMovieSearchViewModel)GetValue(MovieSearchViewModelProperty); }
-            set { SetValue(MovieSearchViewModelProperty, value); }
-        }
+        public static DependencyProperty MoviesProperty = 
+            DependencyProperty.Register("Movies", typeof(IEnumerable<Movie>), typeof(MovieGrid), new PropertyMetadata(null));
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MovieSearchViewModelProperty =
-            DependencyProperty.Register("MovieSearchViewModelProperty", typeof(BaseMovieSearchViewModel), typeof(MovieGrid), null);
+        public IEnumerable<Movie> Movies
+        {
+            get { return (IEnumerable<Movie>)GetValue(MovieGrid.MoviesProperty); }
+            set { SetValue(MovieGrid.MoviesProperty, value); }
+        }
 
         public MovieGrid()
         {
-            this.InitializeComponent();
-
+            InitializeComponent();
+            DataContext = this;
         }
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -44,11 +41,6 @@ namespace TmdbMovies.UserControls
             {
                 NavigationService.NavigateTo("MoviePage", selectedMovie);
             }
-        }
-
-        private void Paginator_OnOnPageChange(object sender, int e)
-        {
-            MovieSearchViewModel.OnPageChange(e);
         }
     }
 }

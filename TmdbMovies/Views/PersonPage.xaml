@@ -86,7 +86,7 @@
                 <TextBlock Style="{StaticResource SectionHeader}"
                            HorizontalAlignment="Center"
                            x:Uid="PersonMoviePageMoviesTextBlock" />
-                <usercontrols:MovieGrid MovieSearchViewModel="{x:Bind ViewModel}" />
+                <usercontrols:SearchMovieGrid MovieSearchViewModel="{x:Bind ViewModel}" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

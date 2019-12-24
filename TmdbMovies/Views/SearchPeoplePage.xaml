@@ -5,18 +5,9 @@
     xmlns:local="using:TmdbMovies.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:models="using:TmdbMovies.Models"
-    xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
     xmlns:userControls="using:TmdbMovies.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Page.Resources>
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"
-                                              TrueValue="Visible"
-                                              FalseValue="Collapsed" />
-        <converters:BoolNegationConverter x:Key="NegBool" />
-    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -42,36 +33,9 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <GridView Grid.Row="0"
-                      Margin="10"
-                      ItemsSource="{x:Bind ViewModel.Actors, Mode=TwoWay}"
-                      IsEnabled="{x:Bind ViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
-                      HorizontalContentAlignment="Center"
-                      IsItemClickEnabled="True"
-                      ItemClick="GridView_ItemClick">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Person">
-                        <StackPanel Margin="5"
-                                    Width="200">
-                            <controls:ImageEx Width="185"
-                                              Height="280"
-                                              CornerRadius="20"
-                                              IsCacheEnabled="True"
-                                              Background="LightGray"
-                                              Source="{x:Bind Profile}" />
-                            <TextBlock Text="{x:Bind Name}"
-                                       HorizontalAlignment="Center"
-                                       TextAlignment="Center"
-                                       TextWrapping="WrapWholeWords" />
-                        </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <controls:WrapPanel HorizontalAlignment="Center" />
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
+
+            <userControls:PeopleGrid People="{x:Bind ViewModel.People, Mode=OneWay}"
+                                     IsSearching="{x:Bind ViewModel.IsSearching, Mode=OneWay}"/>
 
             <userControls:Paginator Grid.Row="1"
                                     CurrentPage="{x:Bind ViewModel.CurrentPage, Mode=OneWay}"
