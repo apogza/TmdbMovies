@@ -169,6 +169,9 @@
     <Compile Include="Views\SearchPeoplePage.xaml.cs">
       <DependentUpon>SearchPeoplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SplashsScreen.xaml.cs">
+      <DependentUpon>SplashsScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TopRatedMoviesPage.xaml.cs">
       <DependentUpon>TopRatedMoviesPage.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\camera.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -223,6 +227,7 @@
     <Content Include="Assets\StoreLogo.scale-150.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\TmdbLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
@@ -289,6 +294,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchPeoplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplashsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
