@@ -23,17 +23,17 @@ namespace TmdbMovies.Views
     /// </summary>
     public sealed partial class MoviesWatchlistPage : Page
     {
-        public FavoritesViewModel ViewModel { get; set; }
+        public MoviesWatchlistViewModel ViewModel { get; set; }
 
         public MoviesWatchlistPage()
         {
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ViewModel = NavigationService.RestoreState<FavoritesViewModel>();
-            ViewModel.ReadInfo();
+            ViewModel = NavigationService.RestoreState<MoviesWatchlistViewModel>();
+            await ViewModel.ReadInfo();
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

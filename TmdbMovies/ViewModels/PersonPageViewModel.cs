@@ -23,7 +23,7 @@ namespace TmdbMovies.ViewModels
         {
             string query = $"person/{PersonId}?api_key={TmdbConstants.TmdbKey}";
             Person result = await RestClient.GetEntity<Person>(query);
-            result.IsFavorite = IsFavorite(result);
+            result.IsFavorite = await IsFavorite(result);
 
             Person = result;
         }

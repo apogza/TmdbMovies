@@ -1,40 +1,41 @@
 ﻿using TmdbMovies.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TmdbMovies.ViewModels
 {
     public abstract class BaseViewModel : BindableBase
     {
         protected RestClient RestClient { get; }
-        protected IFavoritesService FavoritesService { get; }
+        protected IDbService DbService { get; }
 
         public BaseViewModel()
             : base()
         {
             RestClient = new RestClient(TmdbConstants.BaseUri);
-            FavoritesService = new FavoritesService();
+            DbService = new DbService();
         }
 
         protected void AddToFavorites<T>(T entity) where T: BaseModel
         {
-            FavoritesService.AddToFavorites(entity);
+            DbService.AddEntity(entity);
             entity.IsFavorite = true;
         }
 
         protected void RemoveFromFavorites<T>(T entity) where T: BaseModel
         {
-            FavoritesService.RemoveFromFavorites(entity);
+            DbService.RemoveEntity(entity);
             entity.IsFavorite = false;
         }
 
-        protected bool IsFavorite<T>(T entity) where T: BaseModel
+        protected async Task<bool> IsFavorite<T>(T entity) where T: BaseModel
         {
-            return FavoritesService.IsFavorite(entity);
+            return await DbService.EntityExists(entity);
         }
 
-        protected IEnumerable<T> GetFavorites<T>() where T : BaseModel
+        protected async Task<IEnumerable<T>> GetFavorites<T>() where T : BaseModel
         {
-            return FavoritesService.GetFavorites<T>();
+            return await DbService.GetEntities<T>();
         }
     }
 }

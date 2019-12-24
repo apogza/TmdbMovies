@@ -15,7 +15,7 @@ namespace TmdbMovies.UserControls
         public IEnumerable<Person> People
         {
             get { return (IEnumerable<Person>)GetValue(PeopleGrid.PeopleProperty); }
-            set { SetValue(PeopleGrid.PeopleProperty, value); }
+            set { SetValue(PeopleGrid.PeopleProperty, value); }            
         }
 
         public static DependencyProperty IsSearchingProperty =

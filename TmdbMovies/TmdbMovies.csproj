@@ -132,10 +132,10 @@
     </Compile>
     <Compile Include="ViewModels\BaseSearchViewModel.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
-    <Compile Include="ViewModels\FavoritesViewModel.cs" />
+    <Compile Include="ViewModels\MoviesWatchlistViewModel.cs" />
     <Compile Include="ViewModels\PersonPageViewModel.cs" />
     <Compile Include="ViewModels\SearchPeoplePageViewModel.cs" />
-    <Compile Include="ViewModels\WatchlistViewModel.cs" />
+    <Compile Include="ViewModels\PeopleWatchlistViewModel.cs" />
     <Compile Include="Views\MoviesWatchlistPage.xaml.cs">
       <DependentUpon>MoviesWatchlistPage.xaml</DependentUpon>
     </Compile>

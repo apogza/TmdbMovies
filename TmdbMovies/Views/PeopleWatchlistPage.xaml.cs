@@ -23,22 +23,17 @@ namespace TmdbMovies.Views
     /// </summary>
     public sealed partial class PeopleWatchlistPage : Page
     {
-        public WatchlistViewModel ViewModel { get; private set; }
+        public PeopleWatchlistViewModel ViewModel { get; private set; }
 
         public PeopleWatchlistPage()
         {
             InitializeComponent();
         }
 
-        private void ListViewBase_OnItemClick(object sender, ItemClickEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //throw new NotImplementedException();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ViewModel = NavigationService.RestoreState<WatchlistViewModel>();
-            ViewModel.ReadInfo();
+            ViewModel = NavigationService.RestoreState<PeopleWatchlistViewModel>();
+            await ViewModel.ReadInfo();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

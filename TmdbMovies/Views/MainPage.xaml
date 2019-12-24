@@ -24,11 +24,11 @@
                                 x:Uid="MainPageTopRatedMoviesLabel"
                                 Tag="TopRatedMoviesPage" />
             <NavigationViewItem Icon="Favorite"
-                                x:Uid="FavoriteMoviesLabel"
-                                Tag="FavoritesPage" />
+                                x:Uid="MoviesWatchlist"
+                                Tag="MoviesWatchlistPage" />
             <NavigationViewItem Icon="AddFriend"
-                                x:Uid="WatchListLabel" 
-                                Tag="WatchlistPage"/>
+                                x:Uid="PeopleWatchlist" 
+                                Tag="PeopleWatchlistPage"/>
             <NavigationViewItem Icon="Find"
                                 x:Uid="MainPageSearchMoviesLabel"
                                 Tag="SearchMoviesPage" />

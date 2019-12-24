@@ -71,7 +71,7 @@ namespace TmdbMovies.ViewModels
         {
             string query = $"movie/{movieId}?api_key={TmdbConstants.TmdbKey}";
             Movie result = await RestClient.GetEntity<Movie>(query);
-            result.IsFavorite = IsFavorite(result);
+            result.IsFavorite = await IsFavorite(result);
             Movie = result; 
 
             HasRevenue = Movie.Revenue > 0;

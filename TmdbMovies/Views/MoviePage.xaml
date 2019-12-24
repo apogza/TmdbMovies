@@ -119,7 +119,7 @@
                                                   CornerRadius="10"
                                                   IsCacheEnabled="True"
                                                   Background="LightGray"
-                                                  Source="{x:Bind Thumbnail, Mode=OneWay}" />
+                                                  Source="{x:Bind Thumbnail}" />
                                 <TextBlock Text="{x:Bind Name}"
                                            Grid.Column="1"
                                            VerticalAlignment="Center"
@@ -162,7 +162,7 @@
                                                   CornerRadius="10"
                                                   IsCacheEnabled="True"
                                                   Background="LightGray"
-                                                  Source="{x:Bind Thumbnail, Mode=OneWay}" />
+                                                  Source="{x:Bind Thumbnail}" />
                                 <TextBlock Text="{x:Bind Name}"
                                            Grid.Column="1"
                                            VerticalAlignment="Center"

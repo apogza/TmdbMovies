@@ -120,8 +120,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FavoritesService.cs" />
-    <Compile Include="IFavoritesService.cs" />
+    <Compile Include="DbService.cs" />
+    <Compile Include="IDbService.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="CastResult.cs" />
