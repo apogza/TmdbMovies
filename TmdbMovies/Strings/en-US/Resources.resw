@@ -252,4 +252,7 @@
   <data name="PeopleWatchlist.Content" xml:space="preserve">
     <value>People Watchlist</value>
   </data>
+  <data name="FilterByWatchlist.Content" xml:space="preserve">
+    <value>Use people watchlist</value>
+  </data>
 </root>

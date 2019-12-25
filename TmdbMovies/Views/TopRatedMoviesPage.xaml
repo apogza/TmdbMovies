@@ -7,49 +7,38 @@
       xmlns:userControls="using:TmdbMovies.UserControls"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid>
+    <Grid RowSpacing="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0"
-              HorizontalAlignment="Center"
-              ColumnSpacing="10"
-              RowSpacing="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="10">
             <TextBlock x:Uid="TopRatedMoviesMainTextBlock"
-                       Grid.Row="0"
-                       Grid.Column="0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center" />
-            <DatePicker Grid.Row="0"
-                        Grid.Column="1"
-                        Date="{x:Bind ViewModel.BeginDate, Mode=TwoWay}" />
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+            <DatePicker Date="{x:Bind ViewModel.BeginDate, Mode=TwoWay}" />
+        </StackPanel>
 
-            <StackPanel  Grid.Row="1"
-                         Grid.Column="1"
-                         Orientation="Horizontal"
-                         Spacing="10"
-                         HorizontalAlignment="Left">
-                <Button x:Uid="TopRatedMoviesSearchButton"
-                        Click="Search_Click"
-                        Width="75" />
-                <Button x:Uid="TopRateMoviesResetButton"
-                        Click="Reset_Click"
-                        Width="75" />
-            </StackPanel>
-        </Grid>
+        <StackPanel  Grid.Row="1"
+                     Orientation="Horizontal"
+                     Spacing="10"
+                     HorizontalAlignment="Center">
+            <CheckBox x:Uid="FilterByWatchlist"
+                          IsChecked="{x:Bind ViewModel.FilterByPeopleWatchlist, Mode=TwoWay}"/>
 
-        <userControls:SearchMovieGrid Grid.Row="1"
+            <Button x:Uid="TopRatedMoviesSearchButton"
+                    Click="Search_Click"
+                    Width="75" />
+            <Button x:Uid="TopRateMoviesResetButton"
+                    Click="Reset_Click"
+                    Width="75" />
+        </StackPanel>
+
+        <userControls:SearchMovieGrid Grid.Row="2"
                                 MovieSearchViewModel="{x:Bind ViewModel}" />
     </Grid>
 </Page>

@@ -39,9 +39,11 @@ namespace TmdbMovies.ViewModels
 
         protected override string GetSearchString()
         {
-            return string.Format("discover/movie?primary_release_date.gte={0}&primary_release_date.lte={1}&page={2}&api_key={3}",
-                BeginDate.Date.ToString(TmdbConstants.JsonDateFormat), EndDate.Date.ToString(TmdbConstants.JsonDateFormat), 
+            string query = string.Format("discover/movie?primary_release_date.gte={0}&primary_release_date.lte={1}&page={2}&api_key={3}",
+                BeginDate.Date.ToString(TmdbConstants.JsonDateFormat), EndDate.Date.ToString(TmdbConstants.JsonDateFormat),
                 CurrentPage, TmdbConstants.TmdbKey);
+            
+            return query;
         }
     }
 }

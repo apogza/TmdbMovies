@@ -38,11 +38,17 @@
                         VerticalAlignment="Center"
                         Date="{x:Bind ViewModel.EndDate, Mode=TwoWay}" />
             </StackPanel>
-            
+
+            <StackPanel Grid.Row="1"
+                        Spacing="10">
+                <CheckBox x:Uid="FilterByWatchlist"
+                          IsChecked="{x:Bind ViewModel.FilterByPeopleWatchlist, Mode=TwoWay}"/>
+            </StackPanel>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Right"
                         Spacing="10">
+
                 <Button x:Uid="NewMoviesSearchButton"
                         Width="75"
                         Click="Search_Click" />

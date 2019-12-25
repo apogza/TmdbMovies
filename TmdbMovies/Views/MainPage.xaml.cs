@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using TmdbMovies.Helpers;
@@ -46,15 +47,6 @@ namespace TmdbMovies.Views
             NavigationService.NavigateTo(item.Tag.ToString());            
         }
 
-        private async void MoviesNav_Loaded(object sender, RoutedEventArgs e)
-        {
-            await CheckInternetConnection();
-            await LoadApiKey();
-            await CheckTmdbAccess();
-
-            NavigationService.NavigateTo(typeof(NewMoviesPage), true);
-        }
-
         private void NavigationView_OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             if (ContentFrame.CanGoBack)
@@ -79,6 +71,19 @@ namespace TmdbMovies.Views
                     ContentFrame.GoForward();
                 }
             }
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            await CheckInternetConnection();
+            await LoadApiKey();
+            await CheckTmdbAccess();
+
+            MainNavigationView.SelectedItem = MainNavigationView.MenuItems.First();
+
+            NavigationService.NavigateTo(typeof(NewMoviesPage), true);
         }
 
         private void MainPage_OnKeyDown(object sender, KeyRoutedEventArgs e)

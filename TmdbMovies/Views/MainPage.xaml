@@ -9,9 +9,9 @@
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView ItemInvoked="NavigationView_ItemInvoked"
+    <NavigationView x:Name="MainNavigationView"
+                    ItemInvoked="NavigationView_ItemInvoked"
                     IsSettingsVisible="False"
-                    Loaded="MoviesNav_Loaded"
                     OpenPaneLength="180"
                     BackRequested="NavigationView_OnBackRequested"
                     IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}">
