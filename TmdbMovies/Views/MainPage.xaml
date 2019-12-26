@@ -14,25 +14,32 @@
                     IsSettingsVisible="False"
                     OpenPaneLength="180"
                     BackRequested="NavigationView_OnBackRequested"
+                    
                     IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}">
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="Video"
                                 x:Uid="MainPageNewMoviesLabel"
+                                TabIndex="0"
                                 Tag="NewMoviesPage"
                                 IsSelected="True"/>
             <NavigationViewItem Icon="Like"
                                 x:Uid="MainPageTopRatedMoviesLabel"
+                                TabIndex="1"
                                 Tag="TopRatedMoviesPage" />
             <NavigationViewItem Icon="Favorite"
                                 x:Uid="MoviesWatchlist"
+                                TabIndex="2"
                                 Tag="MoviesWatchlistPage" />
             <NavigationViewItem Icon="AddFriend"
                                 x:Uid="PeopleWatchlist" 
+                                TabIndex="3"
                                 Tag="PeopleWatchlistPage"/>
             <NavigationViewItem Icon="Find"
                                 x:Uid="MainPageSearchMoviesLabel"
+                                TabIndex="4"
                                 Tag="SearchMoviesPage" />
             <NavigationViewItem Icon="People"
+                                TabIndex="5"
                                 x:Uid="MainPageSearchPeoplelLabel"
                                 Tag="SearchPeoplePage" />
         </NavigationView.MenuItems>
