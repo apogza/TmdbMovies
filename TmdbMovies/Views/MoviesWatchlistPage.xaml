@@ -11,6 +11,17 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-        <usercontrols:MovieGrid Movies="{x:Bind ViewModel.Movies, Mode=OneWay}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <SearchBox  Grid.Row="0"
+                    Width="300"
+                    QueryText="{x:Bind Path=ViewModel.Title, Mode=TwoWay}"
+                    QuerySubmitted="SearchBox_QuerySubmitted" />
+        <usercontrols:MovieGrid 
+            Grid.Row="1"
+            Movies="{x:Bind ViewModel.Movies, Mode=OneWay}" />
     </Grid>
 </Page>

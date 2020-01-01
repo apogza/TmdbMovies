@@ -9,6 +9,8 @@ namespace TmdbMovies.ViewModels
 {
     public class MoviesWatchlistViewModel : BaseViewModel
     {
+        private IEnumerable<Movie> _originalMovieList;
+
         private IEnumerable<Movie> _movies;
         public IEnumerable<Movie> Movies 
         {
@@ -16,9 +18,30 @@ namespace TmdbMovies.ViewModels
             private set { SetProperty(ref _movies, value); }
         }
 
+        public string _title;
+
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
         public async Task ReadInfo()
         {
-            Movies = await DbService.GetEntities<Movie>();
+            _originalMovieList = await DbService.GetEntities<Movie>();
+            FilterByTitle();
+        }
+
+        public void FilterByTitle()
+        {
+            if (string.IsNullOrWhiteSpace(Title))
+            {
+                Movies = _originalMovieList;
+            }
+            else
+            {                
+                Movies = _originalMovieList.Where(movie => movie.Title.ToLower().Contains(Title.ToLower()));
+            }
         }
     }
 }

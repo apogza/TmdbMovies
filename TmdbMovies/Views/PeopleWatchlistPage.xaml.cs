@@ -40,5 +40,10 @@ namespace TmdbMovies.Views
         {
             NavigationService.SaveState(ViewModel);
         }
+
+        private void SearchBox_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
+        {
+            ViewModel.FilterByName();
+        }
     }
 }

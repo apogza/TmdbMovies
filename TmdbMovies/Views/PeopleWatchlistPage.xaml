@@ -9,7 +9,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-        <usercontrols:PeopleGrid People="{x:Bind ViewModel.People, Mode=OneWay}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <SearchBox Width="300"                   
+                   x:Uid="PersonPageSearchBox"
+                   QuerySubmitted="SearchBox_QuerySubmitted"
+                   QueryText="{x:Bind Path=ViewModel.Name, Mode=TwoWay}" />
+
+        <usercontrols:PeopleGrid Grid.Row="1" 
+                                 People="{x:Bind ViewModel.People, Mode=OneWay}"
                                  IsSearching="False" />
     </Grid>
 </Page>

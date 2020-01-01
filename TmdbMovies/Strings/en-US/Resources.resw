@@ -255,4 +255,7 @@
   <data name="FilterByWatchlist.Content" xml:space="preserve">
     <value>Use people watchlist as filter</value>
   </data>
+  <data name="PersonPageSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Filter by Name</value>
+  </data>
 </root>
