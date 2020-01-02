@@ -19,11 +19,6 @@ namespace TmdbMovies.Views
             this.InitializeComponent();
         }
 
-        private async void SearchBox_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
-        {
-            await ViewModel.Search(true);
-        }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = NavigationService.RestoreState<SearchMoviesPageViewModel>();
@@ -33,6 +28,11 @@ namespace TmdbMovies.Views
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             NavigationService.SaveState(ViewModel);
+        }
+
+        private async void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            await ViewModel.Search(true);
         }
     }
 }

@@ -16,10 +16,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <SearchBox  Grid.Row="0"
-                    Width="300"
-                    QueryText="{x:Bind Path=ViewModel.Title, Mode=TwoWay}"
-                    QuerySubmitted="SearchBox_QuerySubmitted" />
+        <AutoSuggestBox Grid.Row="0"
+                        Width="300"
+                        x:Uid="MovieWatchlistSearchBox"
+                        QueryIcon="Find"
+                        Text="{x:Bind Path=ViewModel.Title, Mode=TwoWay}"
+                        QuerySubmitted="AutoSuggestBox_QuerySubmitted" />
         <usercontrols:MovieGrid 
             Grid.Row="1"
             Movies="{x:Bind ViewModel.Movies, Mode=OneWay}" />

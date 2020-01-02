@@ -23,7 +23,14 @@ namespace TmdbMovies.ViewModels
         public string Name
         {
             get { return _name; }
-            set { SetProperty(ref _name, value); }
+            set 
+            { 
+                SetProperty(ref _name, value); 
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    FilterByName();
+                }
+            }
         }
 
         public void FilterByName()

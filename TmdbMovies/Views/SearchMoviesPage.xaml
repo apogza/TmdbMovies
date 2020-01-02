@@ -19,14 +19,13 @@
                     Grid.Row="0"
                     VerticalAlignment="Center"
                     Spacing="10">
-            <SearchBox Width="300"
-                       x:Uid="SearchMoviesSearchBox"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       QueryText="{x:Bind Path=ViewModel.SearchString, Mode=TwoWay}"
-                       QuerySubmitted="SearchBox_QuerySubmitted"
-                       SearchHistoryEnabled="False">
-            </SearchBox>
+            <AutoSuggestBox Width="300"
+                            x:Uid="SearchMoviesSearchBox"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            QueryIcon="Find"
+                            Text="{x:Bind Path=ViewModel.SearchString, Mode=TwoWay}"
+                            QuerySubmitted="AutoSuggestBox_QuerySubmitted" />
         </StackPanel>
 
         <userControls:SearchMovieGrid Grid.Row="1"

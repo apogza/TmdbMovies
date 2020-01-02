@@ -19,14 +19,14 @@
                     Grid.Row="0"
                     VerticalAlignment="Center"
                     Spacing="10">
-            <SearchBox Width="300"
-                       x:Uid="SearchPeopleSearchBox"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       QueryText="{x:Bind ViewModel.SearchString, Mode=TwoWay}"
-                       QuerySubmitted="SearchBox_OnQuerySubmitted"
-                       SearchHistoryEnabled="False">
-            </SearchBox>
+            <AutoSuggestBox Width="300"
+                            x:Uid="SearchPeopleSearchBox"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            QueryIcon="Find"
+                            Text="{x:Bind ViewModel.SearchString, Mode=TwoWay}"
+                            QuerySubmitted="AutoSuggestBox_QuerySubmitted" />
+
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

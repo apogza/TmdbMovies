@@ -14,10 +14,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <SearchBox Width="300"                   
-                   x:Uid="PersonPageSearchBox"
-                   QuerySubmitted="SearchBox_QuerySubmitted"
-                   QueryText="{x:Bind Path=ViewModel.Name, Mode=TwoWay}" />
+        <AutoSuggestBox Width="300"                   
+                        x:Uid="PersonPageSearchBox"
+                        QueryIcon="Find"
+                        QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                        Text="{x:Bind Path=ViewModel.Name, Mode=TwoWay}" />
 
         <usercontrols:PeopleGrid Grid.Row="1" 
                                  People="{x:Bind ViewModel.People, Mode=OneWay}"

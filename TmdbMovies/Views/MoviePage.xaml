@@ -46,7 +46,7 @@
                                           IsChecked="{x:Bind ViewModel.Movie.IsFavorite, Mode=TwoWay}"
                                           HorizontalAlignment="Center"
                                           Click="FavButton_Click">
-                                <SymbolIcon Symbol="Favorite" />
+                                <SymbolIcon Symbol="Add" />
                             </ToggleButton>
                         </StackPanel>
                     </StackPanel>

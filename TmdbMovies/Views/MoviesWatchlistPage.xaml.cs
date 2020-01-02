@@ -41,7 +41,7 @@ namespace TmdbMovies.Views
             NavigationService.SaveState(ViewModel);
         }
 
-        private void SearchBox_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
+        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             ViewModel.FilterByTitle();
         }

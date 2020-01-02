@@ -42,14 +42,14 @@ namespace TmdbMovies.Views
             NavigationService.SaveState(ViewModel);
         }
 
-        private async void SearchBox_OnQuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
-        {
-            await ViewModel.Search(true);
-        }
-
         private void Paginator_OnOnPageChange(object sender, int e)
         {
             ViewModel.OnPageChange(e);
+        }
+
+        private async void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            await ViewModel.Search(true);
         }
     }
 }
