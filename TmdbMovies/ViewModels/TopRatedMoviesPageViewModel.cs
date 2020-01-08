@@ -3,7 +3,7 @@ using TmdbMovies.Models;
 
 namespace TmdbMovies.ViewModels
 {
-    public class TopRatedMoviesPageViewModel : BaseMovieSearchViewModel
+    public class TopRatedMoviesPageViewModel : BaseSearchMovieViewModel 
     {
         private DateTimeOffset _beginDate;
 

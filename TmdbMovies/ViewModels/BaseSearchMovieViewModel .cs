@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace TmdbMovies.ViewModels
 {
-    public abstract class BaseMovieSearchViewModel: BaseSearchViewModel
+    public abstract class BaseSearchMovieViewModel : BaseSearchViewModel
     {
         private IEnumerable<Movie> _movies;
         public IEnumerable<Movie> Movies
@@ -21,6 +21,19 @@ namespace TmdbMovies.ViewModels
         {
             get { return _filterByPeopleWatchlist; }
             set { SetProperty(ref _filterByPeopleWatchlist, value); }
+        }
+
+        public override string SearchString 
+        {
+            get { return base.SearchString; }
+            set
+            {
+                base.SearchString = value;
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    Movies = null;
+                }
+            }
         }
 
         public override async Task Search(bool shouldRefreshCurrentPage)

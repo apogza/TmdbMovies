@@ -17,7 +17,7 @@ namespace TmdbMovies.ViewModels
         }
 
         private string _searchString;
-        public string SearchString
+        public virtual string SearchString
         {
             get { return _searchString; }
             set { SetProperty(ref _searchString, value); }

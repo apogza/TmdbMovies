@@ -9,15 +9,15 @@ namespace TmdbMovies.UserControls
 {
     public sealed partial class SearchMovieGrid : UserControl
     {
-        public BaseMovieSearchViewModel MovieSearchViewModel
+        public BaseSearchMovieViewModel  MovieSearchViewModel
         {
-            get { return (BaseMovieSearchViewModel)GetValue(MovieSearchViewModelProperty); }
+            get { return (BaseSearchMovieViewModel )GetValue(MovieSearchViewModelProperty); }
             set { SetValue(MovieSearchViewModelProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MovieSearchViewModelProperty =
-            DependencyProperty.Register("MovieSearchViewModelProperty", typeof(BaseMovieSearchViewModel), typeof(SearchMovieGrid), null);
+            DependencyProperty.Register("MovieSearchViewModelProperty", typeof(BaseSearchMovieViewModel ), typeof(SearchMovieGrid), null);
 
         public SearchMovieGrid()
         {

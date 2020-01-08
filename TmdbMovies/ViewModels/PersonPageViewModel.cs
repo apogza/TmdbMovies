@@ -5,7 +5,7 @@ using TmdbMovies.Models;
 
 namespace TmdbMovies.ViewModels
 {
-    public class PersonPageViewModel: BaseMovieSearchViewModel
+    public class PersonPageViewModel: BaseSearchMovieViewModel 
     {
         public int PersonId { get; set; }
 

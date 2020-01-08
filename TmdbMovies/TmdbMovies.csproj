@@ -148,7 +148,7 @@
     <Compile Include="UserControls\SearchMovieGrid.xaml.cs">
       <DependentUpon>SearchMovieGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\BaseMovieSearchViewModel.cs" />
+    <Compile Include="ViewModels\BaseSearchMovieViewModel .cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MoviePageViewModel.cs" />
     <Compile Include="ViewModels\NewMoviesPageViewModel.cs" />

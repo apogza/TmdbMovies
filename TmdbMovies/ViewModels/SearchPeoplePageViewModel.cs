@@ -17,6 +17,19 @@ namespace TmdbMovies.ViewModels
             set { SetProperty(ref _people, value); }
         }
 
+        public override string SearchString 
+        {
+            get { return base.SearchString; }
+            set
+            {
+                base.SearchString = value;
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    People = null;
+                }
+            }
+        }
+
         public override async Task Search(bool shouldRefreshCurrentPage)
         {
             IsSearching = true;

@@ -2,7 +2,7 @@
 
 namespace TmdbMovies.ViewModels
 {
-    public class SearchMoviesPageViewModel: BaseMovieSearchViewModel
+    public class SearchMoviesPageViewModel: BaseSearchMovieViewModel 
     {
         protected override string GetSearchString()
         {

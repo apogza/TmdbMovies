@@ -40,14 +40,11 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1"
-                        Spacing="10">
-                <CheckBox x:Uid="FilterByWatchlist"
-                          IsChecked="{x:Bind ViewModel.FilterByPeopleWatchlist, Mode=TwoWay}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         Spacing="10">
+                <CheckBox x:Uid="FilterByWatchlist"
+                          IsChecked="{x:Bind ViewModel.FilterByPeopleWatchlist, Mode=TwoWay}"/>
 
                 <Button x:Uid="NewMoviesSearchButton"
                         Width="75"
