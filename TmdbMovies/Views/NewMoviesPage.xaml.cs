@@ -35,7 +35,8 @@ namespace TmdbMovies.Views
             
             DataContext = ViewModel;
 
-            if (e.Parameter != null && (bool) e.Parameter && !ViewModel.HasResults)
+            if (e.Parameter != null && (bool) e.Parameter 
+                && (ViewModel.HasResults.HasValue && !ViewModel.HasResults.Value))
             {
                 await ViewModel.Search(true);
             }

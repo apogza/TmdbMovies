@@ -261,4 +261,7 @@
   <data name="MovieWatchlistSearchBox.PlaceholderText" xml:space="preserve">
     <value>Filter by Title</value>
   </data>
+  <data name="NoResultsTextBlock.Text" xml:space="preserve">
+    <value>No Results Found</value>
+  </data>
 </root>

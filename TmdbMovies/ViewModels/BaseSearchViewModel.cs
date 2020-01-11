@@ -34,8 +34,8 @@ namespace TmdbMovies.ViewModels
             }
         }
 
-        private bool _hasResults;
-        public bool HasResults
+        private bool? _hasResults;
+        public bool? HasResults
         {
             get { return _hasResults; }
             set { SetProperty(ref _hasResults, value); }
@@ -73,7 +73,7 @@ namespace TmdbMovies.ViewModels
 
         public virtual Task ResetSearch()
         {
-            HasResults = false;
+            HasResults = null;
             return Task.CompletedTask;
         }
 

@@ -24,12 +24,12 @@ namespace TmdbMovies.UserControls
     public sealed partial class Paginator : UserControl, INotifyPropertyChanged
     {
 
-        public static DependencyProperty HasResultsDependencyProperty = DependencyProperty.Register("HasResults", typeof(bool), 
-            typeof(Paginator), new PropertyMetadata(default(bool)));
+        public static DependencyProperty HasResultsDependencyProperty = DependencyProperty.Register("HasResults", typeof(bool?), 
+            typeof(Paginator), new PropertyMetadata(default(bool?)));
 
-        public bool HasResults
+        public bool? HasResults
         {
-            get { return (bool) GetValue(HasResultsDependencyProperty); }
+            get { return (bool?) GetValue(HasResultsDependencyProperty); }
             set 
             { 
                 SetValue(HasResultsDependencyProperty, value); 

@@ -8,45 +8,59 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:models="using:TmdbMovies.Models"
     xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    xmlns:localConverters="using:TmdbMovies.Converters" 
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"
-                                              TrueValue="Visible"
-                                              FalseValue="Collapsed" />
-        <converters:BoolNegationConverter x:Key="NegBool" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"
+                                                  TrueValue="Visible"
+                                                  FalseValue="Collapsed" />
+            <localConverters:NegNullableBoolToVisibilityConverter x:Key="NegNullableBoolToVisibilityConverter" />
+            <converters:BoolNegationConverter x:Key="NegBool" />
+        </ResourceDictionary>
     </UserControl.Resources>
-
-    <GridView Grid.Row="0"
-                      Margin="10"
-                      ItemsSource="{x:Bind People, Mode=OneWay}"
-                      IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
-                      HorizontalContentAlignment="Center"
-                      IsItemClickEnabled="True"
-                      ItemClick="GridView_ItemClick">
-        <GridView.ItemTemplate>
-            <DataTemplate x:DataType="models:Person">
-                <StackPanel Margin="5"
-                                    Width="200">
-                    <controls:ImageEx Width="185"
-                                              Height="280"
-                                              CornerRadius="20"
-                                              IsCacheEnabled="True"
-                                              Background="LightGray"
-                                              Source="{x:Bind Profile}" />
-                    <TextBlock Text="{x:Bind Name}"
-                                       HorizontalAlignment="Center"
-                                       TextAlignment="Center"
-                                       TextWrapping="WrapWholeWords" />
-                </StackPanel>
-            </DataTemplate>
-        </GridView.ItemTemplate>
-        <GridView.ItemsPanel>
-            <ItemsPanelTemplate>
-                <controls:WrapPanel HorizontalAlignment="Center" />
-            </ItemsPanelTemplate>
-        </GridView.ItemsPanel>
-    </GridView>
+    <Grid>
+        <GridView Grid.Row="0"
+                          Margin="10"
+                          ItemsSource="{x:Bind People, Mode=OneWay}"
+                          IsEnabled="{x:Bind IsSearching, Converter={StaticResource NegBool}, Mode=OneWay}"
+                          HorizontalContentAlignment="Center"
+                          IsItemClickEnabled="True"
+                          ItemClick="GridView_ItemClick">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:Person">
+                    <StackPanel Margin="5"
+                                        Width="200">
+                        <controls:ImageEx Width="185"
+                                                  Height="280"
+                                                  CornerRadius="20"
+                                                  IsCacheEnabled="True"
+                                                  Background="LightGray"
+                                                  Source="{x:Bind Profile}" />
+                        <TextBlock Text="{x:Bind Name}"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="WrapWholeWords" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:WrapPanel HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+        <TextBlock Grid.Row="0"
+                   x:Uid="NoResultsTextBlock"
+                   Style="{StaticResource NoResultsMessage}"
+                   Margin="10"
+                   HorizontalAlignment="Center"
+                   Visibility="{x:Bind HasResults, Converter={StaticResource NegNullableBoolToVisibilityConverter}, Mode=OneWay}"/>
+    </Grid>
 </UserControl>

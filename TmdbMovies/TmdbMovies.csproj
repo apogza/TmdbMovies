@@ -121,6 +121,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\NegNullableBoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="NavigationService.cs" />
     <Compile Include="UserControls\MovieGrid.xaml.cs">

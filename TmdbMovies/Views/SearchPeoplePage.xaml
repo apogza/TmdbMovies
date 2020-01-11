@@ -35,7 +35,8 @@
             </Grid.RowDefinitions>
 
             <userControls:PeopleGrid People="{x:Bind ViewModel.People, Mode=OneWay}"
-                                     IsSearching="{x:Bind ViewModel.IsSearching, Mode=OneWay}"/>
+                                     IsSearching="{x:Bind ViewModel.IsSearching, Mode=OneWay}"
+                                     HasResults="{x:Bind ViewModel.HasResults, Mode=OneWay}" />
 
             <userControls:Paginator Grid.Row="1"
                                     CurrentPage="{x:Bind ViewModel.CurrentPage, Mode=OneWay}"

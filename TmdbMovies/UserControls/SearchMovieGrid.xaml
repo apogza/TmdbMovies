@@ -6,17 +6,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
              xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+             xmlns:localConverters="using:TmdbMovies.Converters" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              IsEnabled="{x:Bind MovieSearchViewModel.IsSearching, Converter={StaticResource NegBool}, Mode=TwoWay}"
              d:DesignHeight="300"
              d:DesignWidth="400">
     <UserControl.Resources>
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"
-                                              TrueValue="Visible"
-                                              FalseValue="Collapsed" />
-        <converters:BoolNegationConverter x:Key="NegBool" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibility"
+                                                  TrueValue="Visible"
+                                                  FalseValue="Collapsed" />
+            <localConverters:NegNullableBoolToVisibilityConverter x:Key="NegNullableBoolToVisibilityConverter" />
+            <converters:BoolNegationConverter x:Key="NegBool" />
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid Grid.Row="0">
@@ -39,5 +46,12 @@
                       IsActive="{x:Bind MovieSearchViewModel.IsSearching, Mode=TwoWay}"
                       Width="100"
                       Height="100" />
+
+        <TextBlock Grid.Row="0"
+                   Margin="10"
+                   x:Uid="NoResultsTextBlock"
+                   Style="{StaticResource NoResultsMessage}"
+                   HorizontalAlignment="Center"                   
+                   Visibility="{x:Bind MovieSearchViewModel.HasResults, Converter={StaticResource NegNullableBoolToVisibilityConverter}, Mode=OneWay}"/>
     </Grid>
 </UserControl>

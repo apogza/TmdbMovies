@@ -28,4 +28,12 @@
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
     </Style>
+
+    <Style x:Name="NoResultsMessage"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" 
+                Value="18" />
+        <Setter Property="Foreground"
+                Value="Gray" />
+    </Style>          
 </ResourceDictionary>

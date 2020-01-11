@@ -27,6 +27,15 @@ namespace TmdbMovies.UserControls
             set { SetValue(PeopleGrid.IsSearchingProperty, value); }
         }
 
+        public static DependencyProperty HasResultsProperty =
+            DependencyProperty.Register("HasResults", typeof(bool?), typeof(PeopleGrid), new PropertyMetadata(default(bool?)));
+
+        public bool? HasResults
+        {
+            get { return (bool?)GetValue(PeopleGrid.HasResultsProperty); }
+            set { SetValue(PeopleGrid.HasResultsProperty, value); }
+        }
+
         public PeopleGrid()
         {
             InitializeComponent();
