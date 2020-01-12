@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="083942ba-af57-4da9-b973-be565d739e9b"
-    Publisher="CN=Apostol Bakalov"
-    Version="1.0.0.0" />
+    Name="48010ApostolBakalov.MovInfo"
+    Publisher="CN=B00F4ACD-55CC-4BB3-8544-8C2E1DF3F918"
+    Version="1.0.1.0" />
 
-  <mp:PhoneIdentity PhoneProductId="083942ba-af57-4da9-b973-be565d739e9b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="c3c97864-7cc5-40ca-8b50-cbed20367f23" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>TmdbMovies</DisplayName>
+    <DisplayName>MovInfo</DisplayName>
     <PublisherDisplayName>Apostol Bakalov</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
