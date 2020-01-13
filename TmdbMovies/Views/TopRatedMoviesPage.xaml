@@ -7,39 +7,42 @@
       xmlns:userControls="using:TmdbMovies.UserControls"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid RowSpacing="10"
-          HorizontalAlignment="Center">
+    <Grid RowSpacing="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    Spacing="10">
-            <TextBlock x:Uid="TopRatedMoviesMainTextBlock"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
-            <DatePicker Date="{x:Bind ViewModel.BeginDate, Mode=TwoWay}" />
-        </StackPanel>
 
-        <StackPanel  Grid.Row="1"
-                     Orientation="Horizontal"
-                     Spacing="10"
-                     HorizontalAlignment="right">
-            <CheckBox x:Uid="FilterByWatchlist"
-                          IsChecked="{x:Bind ViewModel.FilterByPeopleWatchlist, Mode=TwoWay}"/>
+        <Grid Grid.Row="0"
+              HorizontalAlignment="Center"
+              RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0">
+                <TextBlock x:Uid="TopRatedMoviesMainTextBlock"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+                <DatePicker Date="{x:Bind ViewModel.BeginDate, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel  Grid.Row="1"
+                         Orientation="Horizontal"
+                         Spacing="10"
+                         HorizontalAlignment="Right">
+                <CheckBox x:Uid="FilterByWatchlist"
+                              IsChecked="{x:Bind ViewModel.FilterByPeopleWatchlist, Mode=TwoWay}"/>
 
-            <Button x:Uid="TopRatedMoviesSearchButton"
-                    Click="Search_Click"
-                    Width="75" />
-            <Button x:Uid="TopRateMoviesResetButton"
-                    Click="Reset_Click"
-                    Width="75" />
-        </StackPanel>
-
-        <userControls:SearchMovieGrid Grid.Row="2"
+                <Button x:Uid="TopRatedMoviesSearchButton"
+                        Click="Search_Click"
+                        Width="75" />
+                <Button x:Uid="TopRateMoviesResetButton"
+                        Click="Reset_Click"
+                        Width="75" />
+            </StackPanel>
+        </Grid>
+        <userControls:SearchMovieGrid Grid.Row="1"
                                 MovieSearchViewModel="{x:Bind ViewModel}" />
     </Grid>
 </Page>
